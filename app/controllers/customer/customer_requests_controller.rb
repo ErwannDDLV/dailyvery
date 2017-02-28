@@ -1,4 +1,4 @@
-class Customer::RequestsController < RequestsController
+class Customer::RequestsController < ApplicationController
 
   def index
     current_user = User.find(1)
