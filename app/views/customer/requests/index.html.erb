@@ -1,0 +1,24 @@
+<h1>Mes demandes en cours</h1>
+<!-- Pauline : affichage si pas de request pour current_user -->
+<% if @customer_requests.empty? %>
+  <%= aucune demande en cours %>
+<!-- -->
+<% else %>
+  <% @customer_requests.each do |request| %>
+    <div>
+      <%= request.description %>
+      <%= request.parcel %>
+      <%= request.departure %>
+      <%= request.arrival %>
+      <!-- Pauline : affichage si request a un rider -->
+      <% unless request.rider.nil? %>
+        RIDER :
+        <%= request.rider.email %>
+      <% end %>
+      <!-- -->
+    </div>
+  <% end %>
+<% end %>
+<%= link_to new_customer_request_path do %>
+  <div class="btn btn-primary">Créer une nouvelle demande</div>
+<% end %>

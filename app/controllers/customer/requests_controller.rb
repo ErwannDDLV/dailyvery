@@ -1,9 +1,7 @@
 class Customer::RequestsController < ApplicationController
 
   def index
-    current_user = User.find(1)
-    @requests = current_user.requests
-    byebug
+    @customer_requests = current_user.customer_requests
   end
 
   def new
