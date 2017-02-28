@@ -19,11 +19,25 @@
   width: 100%;
 }
 
+.logo {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.navbar-left {
+  width: 17%;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Navbar logo */
 .navbar-wagon-brand img {
   width: 50px;
 }
-
+/* Navbar brand name */
+.brand-name {
+  font-size: 1.7em;
+}
 /* Navbar right section (with form, links, button) */
 .navbar-wagon-right {
   display: flex;
