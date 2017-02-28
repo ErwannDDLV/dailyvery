@@ -84,6 +84,14 @@ requests = [
     parcel: 1,
     customer: users_arr[4]
     },
+  {
+    departure: '20 rue du Petit Cardinal, 33100 Bordeaux',
+    arrival: '80 rue des Sablières, 33800 Bordeaux',
+    description: 'panier AMAP',
+    parcel: 1,
+    customer: users_arr[0],
+    rider: users_arr[2]
+    }
 ]
 
 
