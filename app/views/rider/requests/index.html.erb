@@ -1,0 +1,19 @@
+<h1>Les livraisons que j'ai confirmées</h1>
+<% if @rider_requests.empty? %>
+  <p>Aucune livraison à effectuer</p>
+<% else %>
+  <ul>
+    <% @rider_requests.each do |request| %>
+      <li>
+        <h2>Livraison n° <%= request.id %></h2>
+        <ul>
+          <li>Description : <%= request.description %></li>
+          <li>Depart : <%= request.departure %></li>
+          <li>Arrivée : <%= request.arrival %></li>
+          <li>Colis : <%= request.parcel %></li>
+          <li>Client : <%= request.customer.email %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
