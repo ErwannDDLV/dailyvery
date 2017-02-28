@@ -1,0 +1,13 @@
+<h1>Créer une nouvelle demande</h1>
+<%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :description %>
+  <%= f.input :departure,label: "Adresse de départ" %>
+  <%= f.input :arrival, label: "Adresse d'arrivée" %>
+  <!-- Pauline : pour une disposition inline, ajoute une classe input_html: {class: "name"} -->
+  <%= f.input :parcel, label: "Type de colis", collection: 0..2, as: :radio_buttons %>
+  <!-- Eric -->
+
+  <%= f.button :submit, "Valider la demande" %>
+<% end %>
