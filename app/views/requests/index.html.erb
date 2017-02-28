@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-lg-12">
+      <h1 class="text-center"> Index des requests</h1>
+      <h1> search bar for address car - bike</h1>
+      <div>
+        <%= simple_form_for :search, url: requests_path, :method => :get, :class => "form-inline" do |f| %>
+          <div class="col-lg-3 col-sm-6 form-group">
+            <%= f.input :address, as: :string, input_html: {id: "address"}, required: false, autocomplete: "on" %>
+          </div>
+          <div class="col-lg-3 col-sm-6 form-group">
+            <%= f.submit "Search", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-lg-12">
+        <p>
+          <ul>
+            <% @requests.each do |request| %>
+              <li>
+                <p>D : <%= request.departure %> - A : <%= request.arrival %></p>
+                <p>description : <%= request.description %></p>
+                <p>type de colis : <%= request.parcel %></p>
+                <p>client <%= request.customer.email %></p>
+                <% unless request.rider.nil?  %>
+                  <p>rider <%= request.rider.email %></p>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </p>
+      </div>
+      <div class="col-xs-6 col-lg-12">
+        <h1 class="text-center">MAP</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    function initialize() {
+      var input = document.getElementById('address');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<% end %>
+
+
