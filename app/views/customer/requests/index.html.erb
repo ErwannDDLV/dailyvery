@@ -2,7 +2,7 @@
 <!-- Pauline : affichage si pas de request pour current_user -->
 <% if @customer_requests.empty? %>
   <%= aucune demande en cours %>
-<!-- -->
+<!-- Eric -->
 <% else %>
   <% @customer_requests.each do |request| %>
     <div>
@@ -15,7 +15,7 @@
         RIDER :
         <%= request.rider.email %>
       <% end %>
-      <!-- -->
+      <!-- Eric -->
     </div>
   <% end %>
 <% end %>
