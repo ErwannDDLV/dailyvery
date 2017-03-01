@@ -21,7 +21,11 @@ class RequestsController < ApplicationController
     # end
 
 
-    @departures = Location.joins("INNER JOIN requests ON locations.id = requests.departure_id")
+    #@departures = Location.joins("INNER JOIN requests ON locations.id = requests.departure_id")
+                           #.near(searched_address, searched_radius)
+                          #.where.not(latitude: nil, longitude: nil)
+                         #.where.not("locations.latitude = ? AND locations.longitude = ?", nil, nil)
+    @departures = Location.joins(:departure_request)
                            .near(searched_address, searched_radius)
                           #.where.not(latitude: nil, longitude: nil)
                          #.where.not("locations.latitude = ? AND locations.longitude = ?", nil, nil)
