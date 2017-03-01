@@ -1,4 +1,6 @@
 <h1>Mes demandes en cours</h1>
+
+<<%= render 'shared/search_bar' %>
 <!-- Pauline : affichage si pas de request pour current_user -->
 <% if @customer_requests.empty? %>
   <%= aucune demande en cours %>
