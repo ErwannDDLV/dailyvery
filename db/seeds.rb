@@ -46,6 +46,39 @@ users.each do |user|
   end
 end
 
+locations = [
+  {
+    address: '20 cours Pasteur, 33000 Bordeaux'
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  },
+  {
+    address:
+  }
+]
+
 requests = [
   {
     departure: '20 cours Pasteur, 33000 Bordeaux',
