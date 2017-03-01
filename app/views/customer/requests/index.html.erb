@@ -8,8 +8,8 @@
     <div>
       <%= request.description %>
       <%= request.parcel %>
-      <%= request.departure %>
-      <%= request.arrival %>
+      <%= request.departure.address %>
+      <%= request.arrival.address %>
       <!-- Pauline : affichage si request a un rider -->
       <% unless request.rider.nil? %>
         RIDER :
