@@ -6,7 +6,8 @@
       <div>
         <%= simple_form_for :search, url: requests_path, :method => :get, :class => "form-inline" do |f| %>
           <div class="col-lg-3 col-sm-6 form-group">
-            <%= f.input :address, as: :string, input_html: {id: "address"}, required: false, autocomplete: "on" %>
+            <%= f.input :address, as: :string, input_html: {id: "address"}, required: true, autocomplete: "on" %>
+            <%= f.input :radius, as: :integer, input_html: {id: "radius", value: 5} %>
           </div>
           <div class="col-lg-3 col-sm-6 form-group">
             <%= f.submit "Search", class: "btn btn-primary" %>
