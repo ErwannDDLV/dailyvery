@@ -48,19 +48,50 @@
     google.maps.event.addDomListener(window, 'load', initialize);
   </script>
   <script type="text/javascript">
-    $(document).on('ready', function() {
+  $(document).on('ready', function() {
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+
+    function calcRoute() {
+      var origin      = new google.maps.LatLng(44.8240927, -0.5747974);
+      var destination = new google.maps.LatLng(44.8355752, -0.5750601);
+      var request = {
+          origin:      origin,
+          destination: destination,
+          travelMode:  google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+
+    calcRoute(); // call this anywhere you want
+
       var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
+      handler.buildMap({ internal: {id: 'map'}}, function(){
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
+        directionsDisplay.setMap(handler.getMap());
       });
     });
+
+    // $(document).on('ready', function() {
+    //   var handler = Gmaps.build('Google');
+    //   handler.buildMap({ internal: { id: 'map' } }, function(){
+    //     markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    //     handler.bounds.extendWith(markers);
+    //     handler.fitMapToBounds();
+    //     if (markers.length == 0) {
+    //       handler.getMap().setZoom(2);
+    //     } else if (markers.length == 1) {
+    //       handler.getMap().setZoom(14);
+    //     }
+    //   });
+    // });
+
   </script>
 <% end %>
 
