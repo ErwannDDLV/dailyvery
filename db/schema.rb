@@ -10,20 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228100657) do
+ActiveRecord::Schema.define(version: 20170301121235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "locations", force: :cascade do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
-    t.string   "departure"
-    t.string   "arrival"
+    t.integer  "departure_id"
+    t.integer  "arrival_id"
     t.text     "description"
     t.integer  "parcel"
     t.integer  "customer_id"
     t.integer  "rider_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["customer_id"], name: "index_requests_on_customer_id", using: :btree
     t.index ["rider_id"], name: "index_requests_on_rider_id", using: :btree
   end
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170228100657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "requests", "locations", column: "arrival_id"
+  add_foreign_key "requests", "locations", column: "departure_id"
   add_foreign_key "requests", "users", column: "customer_id"
   add_foreign_key "requests", "users", column: "rider_id"
 end

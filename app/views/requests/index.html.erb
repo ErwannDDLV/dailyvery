@@ -19,7 +19,7 @@
             <% @requests.each do |request| %>
               <li>
                 <p>ID : <%= request.id %></p>
-                <p>D : <%= request.departure %> - A : <%= request.arrival %></p>
+                <p>D : <%= request.departure.address %> - A : <%= request.arrival.address %></p>
                 <p>description : <%= request.description %></p>
                 <p>type de colis : <%= request.parcel %></p>
                 <p>client <%= request.customer.email %></p>

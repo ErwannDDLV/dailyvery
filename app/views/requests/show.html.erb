@@ -3,7 +3,7 @@
     <div class="col-xs-6 col-lg-12">
       <h1 class="text-center"> Commande n° <%= @request.id %></h1>
       <div class="col-xs-6 col-lg-12">
-        <p>D : <%= @request.departure %> - A : <%= @request.arrival %></p>
+        <p>D : <%= @request.departure.address %> - A : <%= @request.arrival.address %></p>
         <p>description : <%= @request.description %></p>
         <p>type de colis : <%= @request.parcel %></p>
         <p>client <%= @request.customer.email %></p>
