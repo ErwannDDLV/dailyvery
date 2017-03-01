@@ -1,1 +1,22 @@
-<%= render 'shared/search_bar' %>
+<div class="home-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6">
+        <div class="rider-side" style="background-image: url(<%= image_path('rider.jpg') %>); background-size: cover;">
+          <div class="rider-overlay">
+            <h1> Rider </h1>
+            <a href="#" class="btn btn primary"> Je propose </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <div class="client-side" style="background-image: url(<%= image_path('rider.jpg') %>); background-size: cover;">
+          <div class="client-overlay">
+            <h1> Client </h1>
+            <a href="#" class="btn btn primary"> Je recherche </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
