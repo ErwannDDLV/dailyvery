@@ -1,0 +1,160 @@
+.customer-index {
+  margin: auto;
+  text-align: center;
+}
+
+.request-list {
+  width: 80%;
+  margin: auto;
+}
+
+.request-list li {
+  list-style: none;
+  border: 1px solid #000;
+}
+
+$avatarSize: 100px;
+$base: azure;
+$highlight: darkturquoise;
+$textBg: white;
+$textColor: #333;
+$textColorHighlighted: white;
+
+html, body {
+   height: 100%;
+}
+
+body {
+   align-items: center;
+   background-color: $base;
+   display: flex;
+   font-family: sans-serif;
+   justify-content: center;
+}
+
+.table-users {
+   border: 1px solid $highlight;
+   border-radius: 6px;
+   display: flex;
+   flex-direction: column;
+   margin: 1em;
+   max-width: 100%;
+   overflow: hidden;
+   width: 600px;
+
+   .table-row {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+
+      div {
+         box-sizing: border-box;
+      }
+
+      &.header {
+         background-color: $highlight;
+         color: $textColorHighlighted;
+         font-size: 1.3em;
+         justify-content: center;
+         padding: .5em;
+      }
+
+      &.item {
+         align-items: center;
+         background-color: $textBg;
+
+         &:not(:last-child) {
+            border-bottom: 1px solid #f1f1f1;
+         }
+
+         > div:first-child {
+            flex: 0;
+            flex-basis: $avatarSize;
+            padding: .5em;
+         }
+
+         .info {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+
+            div {
+               flex: 1;
+               text-align: center;
+            }
+         }
+      }
+
+      &.names {
+         div {
+            background-color: #f1f1f1;
+            flex: 1;
+            padding: .5em;
+            text-align: center;
+
+            &:first-child {
+               flex: 0;
+               flex-basis: $avatarSize;
+            }
+         }
+      }
+
+      img {
+         border-radius: 50%;
+         max-width: 100%;
+      }
+   }
+
+   @media screen and (max-width: 580px) {
+      .table-row {
+
+         &.item .info {
+            align-items: stretch;
+            flex-direction: column;
+
+            div {
+               padding: .3em;
+               text-align: left;
+
+               &:before {
+                  color: gray;
+                  display: inline-block;
+                  width: 60px;
+               }
+
+               &:nth-child(1):before {
+                  content: 'Name:';
+               }
+
+               &:nth-child(2):before {
+                  content: 'Email:';
+               }
+
+               &:nth-child(3):before {
+                  content: 'Phone:';
+               }
+            }
+         }
+
+         &.names {
+            display: none;
+         }
+      }
+   }
+
+   @media screen and (max-width: 400px) {
+      .table-row {
+         flex-direction: column;
+         padding-bottom: 1em;
+
+         &.item div:first-child {
+            flex: 1;
+         }
+
+         &.header {
+            align-items: center;
+         }
+      }
+   }
+}
