@@ -8,8 +8,8 @@
         <h2>Livraison n° <%= request.id %></h2>
         <ul>
           <li>Description : <%= request.description %></li>
-          <li>Depart : <%= request.departure %></li>
-          <li>Arrivée : <%= request.arrival %></li>
+          <li>Depart : <%= request.departure.address %></li>
+          <li>Arrivée : <%= request.arrival.address %></li>
           <li>Colis : <%= request.parcel %></li>
           <li>Client : <%= request.customer.email %></li>
         </ul>
