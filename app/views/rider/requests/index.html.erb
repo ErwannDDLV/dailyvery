@@ -1,5 +1,7 @@
+<h3> <%= @current_user.anonymize %> </h3>
+
 <h1>Les livraisons que j'ai confirmées</h1>
-<% if @rider_requests.empty? %>
+<% if @rider_requests.empty?%>
   <p>Aucune livraison à effectuer</p>
 <% else %>
   <ul>
@@ -8,12 +10,23 @@
         <h2>Livraison n° <%= request.id %></h2>
         <ul>
           <li>Description : <%= request.description %></li>
-          <li>Depart : <%= request.departure.address %></li>
+          <li>Départ : <%= request.departure.address %></li>
           <li>Arrivée : <%= request.arrival.address %></li>
-          <li>Colis : <%= request.parcel %></li>
-          <li>Client : <%= request.customer.email %></li>
+          <li>Client : <%= request.customer.anonymize %></li>
+          <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
         </ul>
       </li>
     <% end %>
   </ul>
 <% end %>
+
+<h1>Mes livraisons passées</h1>
+<% if @rider_done.empty? %>
+  <p>Aucune livraison à effectuer</p>
+<% else %>
+  <% @rider_done.each do |request| %>
+    <li>Livré : <%= request.description %></li>
+    <% end %>
+    <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
+<% end %>
+
