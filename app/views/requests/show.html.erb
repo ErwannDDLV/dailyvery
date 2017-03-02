@@ -54,15 +54,15 @@
       directionsDisplay.setMap(handler.getMap());
     });
 
-  });
-
-  $("#switch-shadow").change(function(event) {
-    $.ajax({
-      method: "put",
-      url: '<%= request_path(@request) %>',
-      dataType: 'script',
-      format: 'js'
+    $("#switch-shadow").change(function(event) {
+      $.ajax({
+        method: "put",
+        url: '<%= request_path(@request) %>',
+        dataType: 'script',
+        format: 'js'
+      });
     });
+
   });
 
   </script>
