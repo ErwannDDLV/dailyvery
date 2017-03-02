@@ -34,6 +34,10 @@ class RequestsController < ApplicationController
       marker.lat departure.latitude
       marker.lng departure.longitude
       marker.infowindow render_to_string(partial: "/requests/map_box", locals: { departure: departure })
+      marker.json({
+        lat_arrival: departure.departure_request.arrival.latitude,
+        lng_arrival: departure.departure_request.arrival.longitude
+        })
     end
 
   end
