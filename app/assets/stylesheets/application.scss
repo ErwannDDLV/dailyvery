@@ -17,3 +17,9 @@
 body {
   margin-bottom: 70px;
 }
+
+h1 {
+  @media (max-width: 468px) {
+        font-size: 30px;
+      }
+}
