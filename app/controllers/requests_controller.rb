@@ -40,6 +40,7 @@ class RequestsController < ApplicationController
         })
     end
 
+
   end
 
   def show
@@ -47,10 +48,20 @@ class RequestsController < ApplicationController
 
   def update
     @request.rider = current_user
+    @request.status = 1
+    # appel de la methode privée qui génère un code
+    # @request.code = appel_methode
     if @request.save
-      redirect_to rider_requests_path
+      respond_to do |format|
+        format.html { redirect_to request_path(@request) }
+        format.js  # <-- will render `app/views/requests/update.js.erb`
+      end
+      #redirect_to rider_requests_path
     else
-      render 'requests/index'
+      respond_to do |format|
+        format.html { render 'requests/show' }
+        format.js  # <-- will render `app/views/requests/update.js.erb`
+      end
     end
   end
 

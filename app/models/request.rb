@@ -8,6 +8,8 @@ class Request < ApplicationRecord
   validates :arrival, presence: true
   validates :parcel, presence: true
 
+  enum status: [ :created, :pending, :done ]
+
   def parcel_icon
     case self.parcel
       when 0 then return 'icons/envelope.svg'

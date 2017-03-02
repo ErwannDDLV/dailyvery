@@ -9,15 +9,22 @@
         <p>client <%= @request.customer.email %></p>
 
       <div class="col-xs-6 col-lg-12">
-        <%= link_to "J'y vais", request_path(@request), method: :put, class: 'btn btn-primary' %>
+          <% if @request.pending? %>
+            <div id="booked">
+              <%= render 'requests/booked', request: @request %>
+            </div>
+          <% else %>
+            <%= render 'shared/switch' %>
+            <div id="booked"></div>
+          <% end %>
       </div>
+
     </div>
     <div class="col-xs-6 col-lg-12">
       <div id="map" style='width: 100%; height: 600px;'></div>
     </div>
   </div>
 </div>
-
 
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
@@ -44,17 +51,19 @@
 
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function(){
-      // markers = handler.addMarkers(<%= raw @hash.to_json %>);
       directionsDisplay.setMap(handler.getMap());
-      // handler.bounds.extendWith(markers);
-      // handler.fitMapToBounds();
-      // if (markers.length == 0) {
-      //   handler.getMap().setZoom(2);
-      // } else if (markers.length == 1) {
-      //   handler.getMap().setZoom(14);
-      // };
     });
 
   });
+
+  $("#switch-shadow").change(function(event) {
+    $.ajax({
+      method: "put",
+      url: '<%= request_path(@request) %>',
+      dataType: 'script',
+      format: 'js'
+    });
+  });
+
   </script>
 <% end %>
