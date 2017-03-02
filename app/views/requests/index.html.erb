@@ -55,17 +55,18 @@
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      // directionsDisplay.setMap(handler.getMap());
+      directionsDisplay.setMap(handler.getMap());
       if (markers.length == 0) {
         handler.getMap().setZoom(2);
       } else if (markers.length == 1) {
         handler.getMap().setZoom(14);
       };
-      markers.forEach(function(marker) {
+      <%= raw @hash.to_json %>.forEach(function(marker) {
         // Listen if marker is clicked => if clicked : display directions
         google.maps.event.addListener(marker, 'click', function(){
           alert('call calcRoute')
           calcRoute(marker.lat, marker.lng, marker.json.lat_arrival.to_f, marker.json.lng_arrival.to_f);
+          directionsDisplay.setMap(handler.getMap());
         });
       })
     });
