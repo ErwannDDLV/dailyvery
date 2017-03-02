@@ -1,5 +1,7 @@
 class Customer::RequestsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: :new
+
   def index
     @customer_requests = current_user.customer_requests
   end
