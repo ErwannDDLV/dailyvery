@@ -4,5 +4,5 @@
   <p>Depart : <%= departure.address %></p>
   <p>Arrivée : <%= departure.departure_request.arrival.address %></p>
   <p>Client : <%= departure.departure_request.customer.email %></p>
-  <%# link_to "Details", flat_path(flat), target: :blank, class: "btn btn-warning" %>
+  <%= link_to "Details", request_path(departure.departure_request), target: :blank, class: "btn btn-warning" %>
 </div>

@@ -11,4 +11,8 @@ class User < ApplicationRecord
     "#{first_name} #{last_name[0].upcase}."
   end
 
+  def to_s
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
 end

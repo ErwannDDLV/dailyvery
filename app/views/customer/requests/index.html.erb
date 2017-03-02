@@ -1,24 +1,38 @@
-<h1>Mes demandes en cours</h1>
-<!-- Pauline : affichage si pas de request pour current_user -->
-<% if @customer_requests.empty? %>
-  <%= aucune demande en cours %>
-<!-- Eric -->
-<% else %>
-  <% @customer_requests.each do |request| %>
-    <div>
-      <%= request.description %>
-      <%= request.parcel %>
-      <%= request.departure.address %>
-      <%= request.arrival.address %>
-      <!-- Pauline : affichage si request a un rider -->
-      <% unless request.rider.nil? %>
-        RIDER :
-        <%= request.rider.email %>
-      <% end %>
-      <!-- Eric -->
-    </div>
-  <% end %>
-<% end %>
+<div class="customer-index">
+  <h1 class="customer-requests">Mes demandes en cours</h1>
 <%= link_to new_customer_request_path do %>
-  <div class="btn btn-primary">Créer une nouvelle demande</div>
-<% end %>
+  <button class="btn btn-primary customer-btn">Créer une nouvelle demande</button>
+  <% end %>
+  <!-- Pauline : affichage si pas de request pour current_user -->
+  <% if @customer_requests.empty? %>
+    <div class="empty-requests">
+      <p>Vous n'avez aucune demande en cours.</p>
+    </div>
+  <!-- Eric -->
+  <% else %>
+    <table class="rwd-table">
+      <tr>
+        <th>Adresse de retrait</th>
+        <th>Adresse de livraison</th>
+        <th>Description de la course</th>
+        <th>Information Rider</th>
+      </tr>
+      <% @customer_requests.each do |request| %>
+        <tr>
+          <td data-th="Adresse de retrait"><%= request.arrival.address %></td>
+          <td data-th="Adresse de livraison"><%= request.arrival.address %></td>
+          <td data-th="Description de la course"> <%= image_tag request.parcel_icon, style: 'height:20px; width:20px;' %> <br>
+          <%= request.description %></td>
+          <td data-th="Rider"> <% if request.rider.nil? %> Pas de rider sur cette course
+            <% else %>
+              <%= request.rider.to_s %>
+              <%= request.rider.email %>
+              <br>
+              <i>(code : <%= request.code %>)</i>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+    </table>
+  <% end %>
+</div>
