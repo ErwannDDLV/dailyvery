@@ -9,9 +9,15 @@ class Customer::RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(customer_request_params)
-    # todo / refacto : Pas d'autre moyen trouvé pour passer l'id customer
-    @request.customer = current_user
+    parameters = {
+      description: customer_request_params[:description],
+      parcel: customer_request_params[:parcel],
+      customer: current_user,
+      departure: Location.create(address: customer_request_params[:departure]),
+      arrival: Location.create(address: customer_request_params[:arrival])
+    }
+
+    @request = Request.new(parameters)
     if @request.save
       redirect_to customer_requests_path
     else
