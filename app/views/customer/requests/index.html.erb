@@ -1,7 +1,7 @@
 <div class="customer-index">
-  <h1>Mes demandes en cours</h1>
+  <h1 class="customer-requests">Mes demandes en cours</h1>
 <%= link_to new_customer_request_path do %>
-  <%= render 'shared/search_bar' %>
+  <button class="btn btn-primary customer-btn">Créer une nouvelle demande</button>
   <% end %>
   <!-- Pauline : affichage si pas de request pour current_user -->
   <% if @customer_requests.empty? %>
@@ -10,60 +10,25 @@
     </div>
   <!-- Eric -->
   <% else %>
-    <ul class="request-list">
-      <% @customer_requests.each do |request| %>
-        <li>
-        <%= request.description %>
-        <%= request.parcel %>
-        <%= request.departure.address %>
-        <%= request.arrival.address %>
-        <!-- Pauline : affichage si request a un rider -->
-        <% unless request.rider.nil? %>
-          RIDER :
-          <%= request.rider.email %>
+    <table class="rwd-table">
+      <tr>
+        <th>Adresse de retrait</th>
+        <th>Adresse de livraison</th>
+        <th>Description de la course</th>
+        <th>Rider</th>
+      </tr>
+       <% @customer_requests.each do |request| %>
+         <tr>
+          <td data-th="Adresse de retrait"><%= request.arrival.address %></td>
+          <td data-th="Adresse de livraison"><%= request.arrival.address %></td>
+          <td data-th="Description de la course"><%= request.description %>, <%= request.parcel %></td>
+          <td data-th="Rider"> <% if request.rider.nil? %> Pas de rider sur cette course
+            <% else %>
+              <%= request.rider.email %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-        </li>
-      <% end %>
-    </ul>
+    </table>
   <% end %>
-</div>
 
-<div class="table-users">
-   <div class="table-row header">
-      <div>Users</div>
-   </div>
-
-   <div class="table-row names">
-      <div>Picture</div>
-      <div>Name</div>
-      <div>Email</div>
-      <div>Phone</div>
-   </div>
-
-   <div class="table-row item">
-      <div><img src="http://lorempixel.com/100/100/people/1" alt="" /></div>
-      <div class="info">
-         <div>Jane Doe</div>
-         <div>jane.doe@foo.com</div>
-         <div>01 800 2000</div>
-      </div>
-   </div>
-
-   <div class="table-row item">
-      <div><img src="http://lorempixel.com/100/100/people/2" alt="" /></div>
-      <div class="info">
-         <div>John Doe</div>
-         <div>john.doe@foo.com</div>
-         <div>01 800 2000</div>
-      </div>
-   </div>
-
-   <div class="table-row item">
-      <div><img src="http://lorempixel.com/100/100/people/3" alt="" /></div>
-      <div class="info">
-         <div>Jane Smith</div>
-         <div>jane.smith@foo.com</div>
-         <div>01 800 2000</div>
-      </div>
-   </div>
-</div>
