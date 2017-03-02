@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.customer-requests {
+  margin-bottom: 20px;
+}
+
 .customer-btn {
   margin: 20px 0;
 }
@@ -17,7 +21,10 @@ $breakpoint-alpha: 480px; // adjust to your needs
 .rwd-table {
   margin: 1em 0;
   min-width: 300px; // adjust to your needs
-
+  min-height: 40Vh;
+  @media (min-width: $breakpoint-alpha) {
+        margin-bottom: 10px;
+      }
   tr {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;

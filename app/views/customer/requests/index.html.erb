@@ -17,8 +17,8 @@
         <th>Description de la course</th>
         <th>Rider</th>
       </tr>
-       <% @customer_requests.each do |request| %>
-         <tr>
+      <% @customer_requests.each do |request| %>
+        <tr>
           <td data-th="Adresse de retrait"><%= request.arrival.address %></td>
           <td data-th="Adresse de livraison"><%= request.arrival.address %></td>
           <td data-th="Description de la course"><%= request.description %>, <%= request.parcel %></td>
@@ -31,4 +31,4 @@
         <% end %>
     </table>
   <% end %>
-
+</div>
