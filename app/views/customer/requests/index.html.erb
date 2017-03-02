@@ -7,13 +7,15 @@
   <% @customer_requests.each do |request| %>
     <div>
       <%= request.description %>
-      <%= request.parcel %>
+      <%= image_tag request.parcel_icon, style: 'height:30px; width:30px;' %>
       <%= request.departure.address %>
       <%= request.arrival.address %>
       <!-- Pauline : affichage si request a un rider -->
       <% unless request.rider.nil? %>
         RIDER :
+        <%= request.rider.to_s %>
         <%= request.rider.email %>
+        <%= request.code %>
       <% end %>
       <!-- Eric -->
     </div>
