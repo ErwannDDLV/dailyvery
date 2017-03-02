@@ -7,4 +7,12 @@ class Request < ApplicationRecord
   validates :departure, presence: true
   validates :arrival, presence: true
   validates :parcel, presence: true
+
+  def parcel_icon
+    case self.parcel
+      when 0 then return 'icons/enveloppe.svg'
+      when 1 then return 'icons/basket.svg'
+      when 2 then return 'icons/sofa.svg'
+    end
+  end
 end
