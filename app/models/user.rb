@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :rider_requests, foreign_key: "rider_id", class_name: "Request"
 
   def anonymize
-    "#{first_name} #{last_name[0].uppcase}."
+    "#{first_name} #{last_name[0].upcase}."
   end
 
 end
