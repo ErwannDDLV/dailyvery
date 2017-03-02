@@ -15,26 +15,36 @@ users = [
     email: 'test1@gmail.com',
     password: 'password',
     address: '23, cours du Medoc, 33000 Bordeaux'
+    first_name: 'Michel'
+    last_name: 'Dupont'
   },
   {
     email: 'test2@gmail.com',
     password: 'password',
     address: '40 cours Saint Louis, 33000 Bordeaux'
+    first_name: 'Marie'
+    last_name: 'Bernardino'
   },
   {
     email: 'test3@gmail.com',
     password: 'password',
     address: '50 rue Notre Dame, 33000 Bordeaux'
+    first_name: 'Jean-Jacques'
+    last_name: 'Valitran'
   },
   {
     email: 'test4@gmail.com',
     password: 'password',
     address: '634, cours de la Liberation, 33400 Talence'
+    first_name: 'Sophie'
+    last_name: 'Jacquot'
   },
   {
     email: 'test5@gmail.com',
     password: 'password',
     address: '10 rue de la Dalbade, 31000 Toulouse'
+    first_name: 'Antoine'
+    last_name: 'Albertin'
   }
 ]
 
@@ -103,6 +113,7 @@ requests = [
     description: '4 chemises à récupérer au pressing',
     parcel: 1,
     customer: users_arr[0]
+    status: 0
   },
   {
     departure: loc_arr[2],
@@ -110,6 +121,7 @@ requests = [
     description: 'sac de sport',
     parcel: 1,
     customer: users_arr[1]
+    status: 0
   },
   {
     departure: loc_arr[4],
@@ -118,6 +130,8 @@ requests = [
     parcel: 1,
     customer: users_arr[1],
     rider: users_arr[2]
+    status: 2
+    code: "lapin bleu"
     },
   {
     departure: loc_arr[6],
@@ -126,6 +140,8 @@ requests = [
     parcel: 1,
     customer: users_arr[2],
     rider: users_arr[1]
+    status: 1
+    code: "vache rouge"
     },
   {
     departure: loc_arr[8],
@@ -133,6 +149,7 @@ requests = [
     description: 'chaussures chez le coordonnier',
     parcel: 1,
     customer: users_arr[4]
+    status: 0
     },
   {
     departure: loc_arr[10],
@@ -141,6 +158,8 @@ requests = [
     parcel: 1,
     customer: users_arr[0],
     rider: users_arr[2]
+    status: 2
+    code: "chat vert"
     }
 ]
 
