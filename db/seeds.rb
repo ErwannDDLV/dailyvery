@@ -118,7 +118,7 @@ requests = [
   {
     departure: loc_arr[2],
     arrival: loc_arr[3],
-    description: 'sac de sport',
+    description: 'Plateaux apéro',
     parcel: 1,
     customer: users_arr[1],
     status: 0
@@ -126,27 +126,27 @@ requests = [
   {
     departure: loc_arr[4],
     arrival: loc_arr[5],
-    description: 'cle à molette',
+    description: 'Plateaux découverte',
     parcel: 1,
     customer: users_arr[1],
     rider: users_arr[2],
     status: 2,
-    code: "lapin bleu"
+    code: "Grand Mulot Sympa"
     },
   {
     departure: loc_arr[6],
     arrival: loc_arr[7],
-    description: 'panier de legumes',
+    description: 'Panier AMAP',
     parcel: 1,
     customer: users_arr[2],
     rider: users_arr[1],
     status: 1,
-    code: "vache rouge",
+    code: "Elégant Faucon Sérieux",
     },
   {
     departure: loc_arr[8],
     arrival: loc_arr[9],
-    description: 'chaussures chez le coordonnier',
+    description: 'Chaussures à récupérer chez le coordonnier',
     parcel: 1,
     customer: users_arr[4],
     status: 0
@@ -154,12 +154,12 @@ requests = [
   {
     departure: loc_arr[10],
     arrival: loc_arr[11],
-    description: 'panier AMAP',
+    description: 'Fromages dressés à récupérer',
     parcel: 1,
     customer: users_arr[0],
     rider: users_arr[2],
     status: 2,
-    code: "chat vert"
+    code: "Grand Renard Agile"
     }
 ]
 
