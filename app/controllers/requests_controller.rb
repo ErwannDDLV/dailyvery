@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
     @request.rider = current_user
     @request.status = 1
     # appel de la methode privée qui génère un code
-    # @request.code = appel_methode
+    @request.code = Indian.new.name
     if @request.save
       respond_to do |format|
         format.html { redirect_to request_path(@request) }
