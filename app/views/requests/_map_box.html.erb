@@ -1,8 +1,12 @@
-<div class="map_box">
-  <h3>Requete n° <%= departure.departure_request.id %></h3>
-  <p><%= departure.departure_request.description %></p>
-  <p>Depart : <%= departure.address %></p>
-  <p>Arrivée : <%= departure.departure_request.arrival.address %></p>
-  <p>Client : <%= departure.departure_request.customer.email %></p>
-  <%= link_to "Details", request_path(departure.departure_request), target: :blank, class: "btn btn-warning" %>
-</div>
+<%= link_to request_path(departure.departure_request) do %>
+  <div class="card"  >
+    <div class="card-category"> <%= image_tag departure.departure_request.parcel_icon %> </div>
+    <div class="card-description">
+      <p><%= departure.departure_request.description %></p>
+      <p class= "arrival_ad">A livrer ici : <%= departure.departure_request.arrival.address %></p>
+
+    </div>
+
+  </div>
+<% end %>
+
