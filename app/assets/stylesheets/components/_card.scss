@@ -1,8 +1,7 @@
 .card {
-  height: 175px;
+  height: 120px;
   width: 250px;
   background-size: cover !important;
-  background-color: #73CDCD;
   color: black;
   position: relative;
   text-decoration: none;
@@ -15,20 +14,19 @@
 .card-category {
   position: absolute;
   top: 10px;
-  left: 10px;
-  font-size: 10px;
-  text-transform: uppercase;
+  left: 110px;
 }
 
 .card-category img {
-  height: 50px;
-  weight: 50px;
+  height: 30px;
+  weight: 30px;
 }
 
 .card-description {
   position: absolute;
   bottom: 10px;
   left: 10px;
+  text-align: center;
 }
 .card-description h2 {
   font-size: 24px;
@@ -52,5 +50,16 @@
 }
 .arrival_ad {
   font-weight: 16px;
+  font-size: 20px;
 
+}
+.card-price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.card-distance {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
