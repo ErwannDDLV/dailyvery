@@ -1,27 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-lg-12">
-      <h1 class="text-center"> Commande n° <%= @request.id %></h1>
-
-        <p>Depart : <%= @request.departure.address %> - Arrivee : <%= @request.arrival.address %></p>
-        <p>description : <%= @request.description %></p>
-        <p>type de colis : <%= @request.parcel %></p>
-        <p>client <%= @request.customer.email %></p>
-
-      <div class="col-xs-6 col-lg-12">
-          <% if @request.pending? %>
-            <div id="booked">
-              <%= render 'requests/booked', request: @request %>
-            </div>
-          <% else %>
-            <%= render 'shared/switch' %>
-            <div id="booked"></div>
-          <% end %>
+    <div class="col-lg-6 col-xs-12">
+      <div class="card-show">
+        <h3> Course #<%= @request.id %></h3>
+        <p> <b>Adresse de retrait</b> : <%= @request.departure.address %></p>
+        <p> <b>Adresse de livraison</b> : <%= @request.arrival.address %></p>
+        <p> <b>Description de la course</b> : <%= @request.description %></p>
+        <p> <b>Type de colis</b> : <%= image_tag @request.parcel_icon, class: "parcel-icon-logo"%></p>
       </div>
-
+      <div class="card-show card-show-center">
+        <h3> Client </h3>
+        <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
+        <p> <b>Contact</b> : <%= @request.customer.email %></p>
+      </div>
+        <% if @request.pending? %>
+            <div id="booked">
+              <div class="booked-ride">
+                <%= render 'requests/booked', request: @request %>
+              </div>
+            </div>
+        <% else %>
+          <div class="show-validation">
+            <h4>Je prends ce ride</h4> <%= render 'shared/switch' %>
+            <div class="booked-ride">
+            <div id="booked"></div>
+             </div>
+          </div>
+        <% end %>
     </div>
-    <div class="col-xs-6 col-lg-12">
-      <div id="map" style='width: 100%; height: 600px;'></div>
+    <div class="col-lg-6 col-xs-12">
+      <div id="map" style='width: 100%; height: 500px;'></div>
     </div>
   </div>
 </div>
