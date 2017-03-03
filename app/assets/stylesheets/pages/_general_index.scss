@@ -1,0 +1,20 @@
+.general-margin {
+  margin-top: 20px;
+}
+
+#map {
+margin: auto;
+margin-bottom: 20px;
+margin-top: 20px;
+min-height: 400px;
+width: 80%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+/*.transport-logo {
+  display: inline;
+  height: 30px;
+  width: 30px;
+}*/
