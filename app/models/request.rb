@@ -8,8 +8,7 @@ class Request < ApplicationRecord
   validates :arrival, presence: true
   validates :parcel, presence: true
 
-  after_create :set_distance
-  #after_create :set_price
+  after_create :set_distance_and_price
 
   enum status: [ :created, :pending, :done ]
 
@@ -23,7 +22,10 @@ class Request < ApplicationRecord
 
   private
 
-  def set_distance
+  def set_distance_and_price
     self.distance = self.departure.distance_to([self.arrival.latitude, self.arrival.longitude])
+    self.price = self.distance * 2
+    self.save
   end
+
 end
