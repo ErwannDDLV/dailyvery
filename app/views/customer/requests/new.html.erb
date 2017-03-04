@@ -28,6 +28,8 @@
     var map;
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
+    var dep_address;
+    var arr_address;
 
     function initialize() {
       var departure_input = document.getElementById('departure_address');
@@ -53,14 +55,35 @@
       });
     }
 
-    //when quit arrival_address input
-    $("#arrival_address").blur(function() {
-      calcRoute($("#departure_address").val(),$(this).val());
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        directionsDisplay.setMap(handler.getMap());
+    // alternative event function for map display
+    function testAddressFields() {
+      var from = $("#departure_address").val();
+      var to = $("#arrival_address").val();
+      if ( from && to ) {
+        calcRoute( from, to );
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function(){
+          directionsDisplay.setMap(handler.getMap());
+        });
+      };
+    };
+
+    $("#arrival_address").change(function() {
+      testAddressFields();
       });
-    });
+
+    $("#departure_address").change(function() {
+      testAddressFields();
+      });
+
+    //when quit arrival_address input
+    // $("#arrival_address").blur(function() {
+    //   calcRoute($("#departure_address").val(),$(this).val());
+    //   var handler = Gmaps.build('Google');
+    //   handler.buildMap({ internal: { id: 'map' } }, function(){
+    //     directionsDisplay.setMap(handler.getMap());
+    //   });
+    // });
 
   });
 
