@@ -47,6 +47,7 @@ class RequestsController < ApplicationController
   end
 
   def update
+    # byebug
     @request.rider = current_user
     @request.status = 1
     # appel de la methode privée qui génère un code

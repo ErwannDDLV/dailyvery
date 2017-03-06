@@ -13,26 +13,20 @@
         <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
         <p> <b>Contact</b> : <%= @request.customer.email %></p>
       </div>
-        <% if @request.pending? %>
-            <div id="booked">
-              <div class="booked-ride">
-                <%= render 'requests/booked', request: @request %>
-              </div>
-            </div>
-        <% else %>
+      <% if @request.pending? || @request.done? %>
+        <div id="booked">
+            <%= render 'requests/booked', request: @request %>
+        </div>
+      <% else %>
           <div class="show-validation">
-          <button class="btn btn-rider" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btn-rider" type="button" id="btn-rider-validation">
             Je prends ce ride
           </button>
+          <div id="booked"></div>
           </div>
-          <div class="collapse" id="collapseExample">
-  <div class="well">
-    <div id="booked"></div>
-  </div>
-</div>
-        <% end %>
+      <% end %>
     </div>
-    <div class="col-lg-6 col-xs-12">
+     <div class="col-lg-6 col-xs-12">
       <div id="map" style='width: 100%; height: 500px;'></div>
     </div>
   </div>
@@ -64,7 +58,7 @@
     handler.buildMap({ internal: { id: 'map' } }, function(){
       directionsDisplay.setMap(handler.getMap());
     });
-    $("#switch-shadow").change(function(event) {
+    $("#btn-rider-validation").click(function(event) {
       $.ajax({
         method: "put",
         url: '<%= request_path(@request) %>',
