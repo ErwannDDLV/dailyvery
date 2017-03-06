@@ -5,9 +5,10 @@
   <%= f.input :description %>
   <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
   <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
-  <!-- Pauline : pour une disposition inline, ajoute une classe input_html: {class: "name"} -->
-  <%= f.input :parcel, label: "Type de colis", collection: 0..2, as: :radio_buttons %>
-  <!-- Eric -->
+  <%= f.label "Type de colis" %>
+  <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, collection_wrapper_tag: :div, item_wrapper_tag: :div) do |b| %>
+    <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
+    <% end %>
 
   <%= f.button :submit, "Valider la demande" %>
 <% end %>
@@ -28,8 +29,6 @@
     var map;
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
-    var dep_address;
-    var arr_address;
 
     function initialize() {
       var departure_input = document.getElementById('departure_address');
@@ -60,21 +59,24 @@
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
       if ( from && to ) {
-        calcRoute( from, to );
+        calcRoute(from, to);
         var handler = Gmaps.build('Google');
         handler.buildMap({ internal: { id: 'map' } }, function(){
           directionsDisplay.setMap(handler.getMap());
         });
       };
+      console.log(from);
+      console.log(to);
     };
-
-    $("#arrival_address").change(function() {
-      testAddressFields();
-      });
 
     $("#departure_address").change(function() {
       testAddressFields();
       });
+    $("#arrival_address").change(function() {
+      testAddressFields();
+      });
+
+
 
     //when quit arrival_address input
     // $("#arrival_address").blur(function() {

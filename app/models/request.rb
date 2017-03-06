@@ -10,11 +10,15 @@ class Request < ApplicationRecord
 
   enum status: [ :created, :pending, :done ]
 
+  def self.parcel_type_icon(parcel)
+      case parcel
+        when 0 then return 'icons/envelope.svg'
+        when 1 then return 'icons/basket.svg'
+        when 2 then return 'icons/sofa.svg'
+      end
+  end
+
   def parcel_icon
-    case self.parcel
-      when 0 then return 'icons/envelope.svg'
-      when 1 then return 'icons/basket.svg'
-      when 2 then return 'icons/sofa.svg'
-    end
+    Request.parcel_type_icon(self.parcel)
   end
 end
