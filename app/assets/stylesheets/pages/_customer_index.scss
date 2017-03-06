@@ -11,8 +11,41 @@
   margin: 20px 0;
 }
 
+.d-wrapper {
+  border-color: grey;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  margin: 5px 15%;
+}
 
+.desc-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px;
+  background: #fbfbfb;
+}
 
+.confirm-card {
+  text-align: right;
+  padding-left: 5px;
+}
+
+.confirm-text {
+  padding-right: 5px;
+}
+
+.address-card {
+  padding: 5px;
+}
+.button-confirm {
+  padding: 3px;
+  border: 1px solid #EEE;
+  border-radius: 2px;
+  display: inline-block;
+  margin-left: 10px;
+}
 // More practical CSS...
 // using mobile first method (IE8,7 requires respond.js polyfill https://github.com/scottjehl/Respond)
 
@@ -58,7 +91,6 @@ $breakpoint-alpha: 480px; // adjust to your needs
       }
     }
   }
-
 
   th, td {
     text-align: left;

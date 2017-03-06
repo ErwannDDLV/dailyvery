@@ -8,6 +8,8 @@ class Request < ApplicationRecord
   validates :arrival, presence: true
   validates :parcel, presence: true
 
+  after_create :set_distance_and_price
+
   enum status: [ :created, :pending, :done ]
 
   def self.parcel_type_icon(parcel)
@@ -21,4 +23,13 @@ class Request < ApplicationRecord
   def parcel_icon
     Request.parcel_type_icon(self.parcel)
   end
+
+  private
+
+  def set_distance_and_price
+    self.distance = self.departure.distance_to([self.arrival.latitude, self.arrival.longitude])
+    self.price = self.distance * 2
+    self.save
+  end
+
 end
