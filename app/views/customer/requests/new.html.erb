@@ -1,23 +1,29 @@
-<h1>Créer une nouvelle demande</h1>
-<%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
-  <%= f.error_notification %>
+<div class="form-wrapper" style="margin: 20px 10%;">
+  <h1>Créer une nouvelle demande</h1>
+  <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
+    <%= f.error_notification %>
 
-  <%= f.input :description %>
-  <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
-  <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
-  <%= f.label "Type de colis" %>
-  <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, collection_wrapper_tag: :div, item_wrapper_tag: :div) do |b| %>
-    <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
-    <% end %>
-
-  <%= f.button :submit, "Valider la demande" %>
-<% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-lg-12">
-      <div id="map" style='width: 100%; height: 600px;'></div>
+    <%= f.input :description %>
+    <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
+    <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
+    <%= f.label "Type de colis" %>
+    <div style="display: flex; justify-content: space-between;width: 30%">
+    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, item_wrapper_tag: :div) do |b| %>
+      <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
+      <% end %>
     </div>
-  </div>
+
+    <div class="form-confirm hidden" style="background: grey; color: white;padding: 5px;">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="price-tag hidden" >
+            Prix de la course : 2 €
+            <%= f.button :submit, "Valider la demande" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 
@@ -39,54 +45,22 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    function calcRoute(departure, arrival) {
-      var origin      = String(departure);
-      var destination = String(arrival);
-      var request = {
-          origin:      origin,
-          destination: destination,
-          travelMode:  google.maps.TravelMode.DRIVING
-      };
-      directionsService.route(request, function(response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-          directionsDisplay.setDirections(response);
-        }
-      });
-    }
-
-    // alternative event function for map display
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
       if ( from && to ) {
-        calcRoute(from, to);
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function(){
-          directionsDisplay.setMap(handler.getMap());
-        });
+        $('.price-tag').removeClass('hidden');
+        $('.form-confirm').removeClass('hidden');
       };
-      console.log(from);
-      console.log(to);
     };
 
     $("#departure_address").change(function() {
       testAddressFields();
       });
+
     $("#arrival_address").change(function() {
       testAddressFields();
       });
-
-
-
-    //when quit arrival_address input
-    // $("#arrival_address").blur(function() {
-    //   calcRoute($("#departure_address").val(),$(this).val());
-    //   var handler = Gmaps.build('Google');
-    //   handler.buildMap({ internal: { id: 'map' } }, function(){
-    //     directionsDisplay.setMap(handler.getMap());
-    //   });
-    // });
-
   });
 
   </script>
