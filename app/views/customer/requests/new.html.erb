@@ -16,7 +16,7 @@
     <div class="form-confirm hidden" style="background: grey; color: white;padding: 5px;">
       <div class="row">
         <div class="col-xs-12">
-          <div class="price-tag hidden" >
+          <div class="price-tag" >
             Prix de la course : 2 €
             <%= f.button :submit, "Valider la demande" %>
           </div>
@@ -48,19 +48,21 @@
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
+      var parcel = 1;
+      var newParams = {departure: from, arrival: to};
       if ( from && to ) {
-        $('.price-tag').removeClass('hidden');
         $('.form-confirm').removeClass('hidden');
       };
     };
 
     $("#departure_address").change(function() {
       testAddressFields();
-      });
+    });
+
 
     $("#arrival_address").change(function() {
       testAddressFields();
-      });
+    });
   });
 
   </script>
