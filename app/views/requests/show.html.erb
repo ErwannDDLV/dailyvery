@@ -20,12 +20,12 @@
             <%= render 'requests/booked', request: @request %>
         </div>
       <% else %>
-          <div class="show-validation">
-          <button class="btn btn-rider" type="button" id="btn-rider-validation">
+          <div class="btn-rider-show">
+            <button class="btn btn-rider" type="button" id="btn-rider-validation">
             Je prends ce ride
           </button>
-          <div id="booked"></div>
           </div>
+          <div id="booked"></div>
       <% end %>
     </div>
      <div class="col-lg-6 col-xs-12">
