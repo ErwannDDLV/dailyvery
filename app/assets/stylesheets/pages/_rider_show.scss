@@ -9,7 +9,15 @@
   border-radius: $border-radius-small;
   padding: 10px;
   margin: auto;
-  max-width: 160px;
+  max-width: 250px;
   text-align: center;
   font-weight: bold;
+}
+
+.show-switch {
+  display: inline;
+}
+
+.show-switch-label {
+  display: inline;
 }
