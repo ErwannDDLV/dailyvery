@@ -1,3 +1,63 @@
+<div class="btn-customer-index">
+  <%= link_to new_customer_request_path do %>
+  <button class="btn btn-client">Créer une nouvelle demande</button>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @customer_requests.each do |request| %>
+      <div class="col-lg-4 col-xs-12 center">
+        <div class="index-card">
+          <h3 class="small-header"> Course n° <%= request.id %></h3>
+          Description : <br>
+          <%= request.description %> <br>
+          Prix : <%= request.price.round %>€ <br>
+          <div class="statut">Statut : <%= request.status %></div>
+          <button class="btn btn-client btn-client-index">Reçu</button> <br>
+
+
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+
+<button class="" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+
+  </div>
+</div>
+
+<!-- <div class="index-list">
+
+    <div class="index-card">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-xs-12">
+
+          </div>
+          <div class="col-lg-4 col-xs-12">
+
+          </div>
+          <div class="col-lg-4 col-xs-12 right">
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
   <% @customer_requests.each do |request| %>
   <div class='d-wrapper'>
@@ -64,43 +124,5 @@
     </div>
 </div>
 <% end %>
+-->
 
-
-<div class="customer-index">
-
-<%= link_to new_customer_request_path do %>
-  <button class="btn btn-primary customer-btn">Créer une nouvelle demande</button>
-  <% end %>
-  <!-- Pauline : affichage si pas de request pour current_user -->
-  <% if @customer_requests.empty? %>
-    <div class="empty-requests">
-      <p>Vous n'avez aucune demande en cours.</p>
-    </div>
-  <!-- Eric -->
-  <% else %>
-    <table class="rwd-table">
-      <tr>
-        <th>Adresse de retrait</th>
-        <th>Adresse de livraison</th>
-        <th>Description de la course</th>
-        <th>Information Rider</th>
-      </tr>
-      <% @customer_requests.each do |request| %>
-        <tr>
-          <td data-th="Adresse de retrait"><%= request.departure.address %></td>
-          <td data-th="Adresse de livraison"><%= request.arrival.address %></td>
-          <td data-th="Description de la course"> <%= image_tag request.parcel_icon, style: 'height:20px; width:20px;' %> <br>
-          <%= request.description %></td>
-          <td data-th="Rider"> <% if request.rider.nil? %> Pas de rider sur cette course
-            <% else %>
-              <%= request.rider.to_s %>
-              <%= request.rider.email %>
-              <br>
-              <i>(code : <%= request.code %>)</i>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-    </table>
-  <% end %>
-</div>
