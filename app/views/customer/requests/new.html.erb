@@ -31,26 +31,41 @@
   <script type="text/javascript">
   $(document).on('ready', function() {
 
-    var geocoder;
-    var map;
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-
     function initialize() {
       var departure_input = document.getElementById('departure_address');
       var arrival_input = document.getElementById('arrival_address');
       var autocomplete = new google.maps.places.Autocomplete(departure_input);
       var autocomplete = new google.maps.places.Autocomplete(arrival_input);
-
     }
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+
+    function calcRoute(departure, arrival) {
+      var origin      = String(departure);
+      var destination = String(arrival);
+      var request = {
+          origin:      origin,
+          destination: destination,
+          travelMode:  google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          //directionsDisplay.setDirections(response);
+          //console.log(response["routes"][0]["legs"][0]["distance"]["value"]);
+          var result = response["routes"][0]["legs"][0]["distance"]["value"];
+          $('.price-tag').prepend('<p>Distance : ' + result/1000 + '</p>');
+        }
+      });
+    }
 
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
       var parcel = 1;
-      var newParams = {departure: from, arrival: to};
       if ( from && to ) {
+        calcRoute(from, to);
         $('.form-confirm').removeClass('hidden');
       };
     };
@@ -58,8 +73,6 @@
     $("#departure_address").change(function() {
       testAddressFields();
     });
-
-
     $("#arrival_address").change(function() {
       testAddressFields();
     });

@@ -10,8 +10,6 @@ class Customer::RequestsController < ApplicationController
     @request = Request.new
   end
 
-  end
-
   def create
     parameters = {
       description: customer_request_params[:description],

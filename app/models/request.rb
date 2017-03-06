@@ -25,6 +25,13 @@ class Request < ApplicationRecord
     Request.parcel_type_icon(self.parcel)
   end
 
+  # def self.calcul_distance(departure, arrival)
+  #   url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{departure}&destination=#{arrival}&key=#{ENV['GOOGLE_API_KEY']}"
+  #   direction_serialized = open(url).read
+  #   direction = JSON.parse(direction_serialized)
+  #   direction["routes"][0]["legs"][0]["distance"]["value"]
+  # end
+
   def set_distance(option = {})
     self.distance = self.departure.distance_to([self.arrival.latitude, self.arrival.longitude])
     if option[:save]
