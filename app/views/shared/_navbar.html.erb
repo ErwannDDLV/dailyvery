@@ -13,8 +13,8 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-      <%= link_to t(".sign_in", default: "Rider"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
-      <%= link_to t(".sign_up", default: "Client"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
+      <%= link_to t(".sign_in", default: "Rider"), rider_requests_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
+      <%= link_to t(".sign_up", default: "Client"), customer_requests_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
      <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
             <%= t(".sign_out", default: "Déconnexion") %>
              <% end %>
@@ -37,10 +37,10 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to t(".sign_in", default: "Rider"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
+          <%= link_to t(".sign_in", default: "Rider"), rider_requests_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
         </li>
         <li>
-          <%= link_to t(".sign_up", default: "Client"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
+          <%= link_to t(".sign_up", default: "Client"), customer_requests_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
         </li>
         <li>
         <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>

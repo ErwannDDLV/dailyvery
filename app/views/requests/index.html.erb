@@ -1,23 +1,31 @@
-<div class="container general-margin">
-  <%= simple_form_for :search, url: requests_path, :method => :get, :class => "form-inline" do |f| %>
-    <div class="row">
-      <div class="col-lg-5 col-xs-12">
-        <%= f.input :address, as: :string, input_html: {id: "address"}, required: true, autocomplete: "on", label:false %>
-      </div>
-      <div class="col-lg-5 col-xs-12">
-        <%= f.input :radius, as: :integer, input_html: {id: "radius", value: 5}, label: false %>
-      </div>
-      <div class="col-lg-2 col-xs-12">
-        <%= f.button :submit, value: "Rechercher" %>
-      </div>
-      <!--<div class="col-lg-4 col-xs-12">
-      <%= image_tag "icons/bike.svg", class: "transport-logo"%>
-       <%= render 'shared/switch' %>
-      <%= image_tag "icons/car.svg", class: "transport-logo"%>
-      </div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+        <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
+          <div class="search-ride">
+            <div>
+            <%= f.input :address, as: :string, input_html: {id: "address"}, html: {class: "form-search"}, required: true, autocomplete: "on", label:false %>
+            </div>
+            <div>
+              <%= render 'shared/slider' %>
+            </div>
+            <div>
+            <%= f.button :submit, value: "Rechercher" %>
+            </div>
+          </div>
+        <% end %>
+
     </div>
-  <% end %>
+  </div>
 </div>
+
+<!--<div class="col-lg-4 col-xs-12">
+<%= image_tag "icons/bike.svg", class: "transport-logo"%>
+ <%= render 'shared/switch' %>
+<%= image_tag "icons/car.svg", class: "transport-logo"%>
+</div> -->
+
 <div id="map"></div>
 
 <%= content_for(:after_js) do %>

@@ -1,34 +1,42 @@
-<h3> <%= @current_user.anonymize %> </h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
 
-<%= link_to "Chercher d'autres rides disponibles", requests_path %>
+      <h3> <%= @current_user.anonymize %> </h3>
 
-<h1>Les livraisons que j'ai confirmées</h1>
-<% if @rider_requests.empty?%>
-  <p>Aucune livraison à effectuer</p>
-<% else %>
-  <ul>
-    <% @rider_requests.each do |request| %>
-      <li>
-        <h2>Livraison n° <%= request.id %></h2>
+      <h1>Les livraisons que j'ai confirmées</h1>
+      <% if @rider_requests.empty?%>
+        <p>Aucune livraison à effectuer</p>
+      <% else %>
         <ul>
-          <li>Description : <%= request.description %></li>
-          <li>Départ : <%= request.departure.address %></li>
-          <li>Arrivée : <%= request.arrival.address %></li>
-          <li>Client : <%= request.customer.anonymize %></li>
-          <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
+          <% @rider_requests.each do |request| %>
+            <li>
+              <h2>Livraison n° <%= request.id %></h2>
+              <ul>
+                <li>Description : <%= request.description %></li>
+                <li>Départ : <%= request.departure.address %></li>
+                <li>Arrivée : <%= request.arrival.address %></li>
+                <li>Client : <%= request.customer.anonymize %></li>
+                <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
+              </ul>
+            </li>
+          <% end %>
         </ul>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+      <% end %>
 
-<h1>Mes livraisons passées</h1>
-<% if @rider_done.empty? %>
-  <p>Aucune livraison à effectuer</p>
-<% else %>
-  <% @rider_done.each do |request| %>
-    <li>Livré : <%= request.description %></li>
-    <% end %>
-    <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
-<% end %>
+      <h1>Mes livraisons passées</h1>
+      <% if @rider_done.empty? %>
+        <p>Aucune livraison à effectuer</p>
+      <% else %>
+        <% @rider_done.each do |request| %>
+          <li>Livré : <%= request.description %></li>
+          <% end %>
+          <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
+      <% end %>
 
+      <%= link_to rider_requests_path do %>
+        <button class="btn btn-primary customer-btn">Chercher d'autres rides disponibles</button>
+      <% end %>
+    </div>
+  </div>
+</div>
