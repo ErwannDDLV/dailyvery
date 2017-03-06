@@ -57,10 +57,11 @@
           var result = response["routes"][0]["legs"][0]["distance"]["value"];
           $('#distance').html('<p>Distance : ' + result/1000 + ' km</p>');
           // calcul price
-          var parcel = $("#parcel_type").val();
+          //var parcel = $("#parcel_type").val();
+          var parcel = 1;
           var distance_coef = [0.8, 1, 1.5];
           var fix = [0.5, 1, 1.5];
-          var price = ((distance_coef[parcel] * distance) + fix[parcel]);
+          var price = ((distance_coef[parcel] * result/1000) + fix[parcel]);
           console.log(price);
           $('#price').html('<p>Prix de la course : ' + price + ' €</p>');
         }
@@ -70,7 +71,8 @@
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
-      var parcel = $('input[:parcel]:checked').val();
+      //var parcel = $('input[:parcel]:checked').val();
+      var parcel = 1;
       console.log(parcel);
       if ( from && to && parcel) {
         // calcul distance and price
