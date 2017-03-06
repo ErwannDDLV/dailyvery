@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-lg-6 col-xs-12">
       <div class="card-show">
-        <h3> Course n° <%= @request.id %></h3>
+        <h3 class="small-header"> Course n° <%= @request.id %></h3>
         <p> <b>Adresse de retrait</b> : <%= @request.departure.address %></p>
         <p> <b>Adresse de livraison</b> : <%= @request.arrival.address %></p>
         <p> <b>Description de la course</b> : <%= @request.description %></p>
         <p> <b>Type de colis</b> : <%= image_tag @request.parcel_icon, class: "parcel-icon-logo"%></p>
       </div>
       <div class="card-show card-show-center">
-        <h3> Client </h3>
+        <h3 class="small-header"> Client </h3>
         <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
         <p> <b>Contact</b> : <%= @request.customer.email %></p>
       </div>
@@ -21,9 +21,7 @@
             </div>
         <% else %>
           <div class="show-validation">
-            <h4>Je prends ce ride</h4>
-
-            <%= render 'shared/switch' %>
+            <h4 class="small-header">Je prends ce ride</h4> <%= render 'shared/switch' %>
             <div class="booked-ride">
             <div id="booked"></div>
              </div>
