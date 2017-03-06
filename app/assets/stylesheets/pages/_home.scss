@@ -21,24 +21,8 @@
   width: 100%;
 }
 
-.btn-rider {
-  background-color: $light-blue;
-  border-color: $light-blue;
-  font-size: 1.2em;
-  margin-top: 400px;
-  color: #fff;
-  font-family: $button-font;
-  padding: 12px;
-}
-
-.btn-client {
-  background-color: $light-orange;
-  border-color: $light-orange;
-  font-size: 1.2em;
-  margin-top: 400px;
-  color: #fff;
-  font-family: $button-font;
-  padding: 12px;
+.btn-rider-margin, .btn-client-margin {
+   margin-top: 400px;
 }
 
 .home-logo {
