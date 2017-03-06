@@ -8,6 +8,8 @@ class Request < ApplicationRecord
   validates :arrival, presence: true
   validates :parcel, presence: true
 
+  after_create :set_distance_and_price
+
   enum status: [ :created, :pending, :done ]
 
   def parcel_icon
@@ -17,4 +19,13 @@ class Request < ApplicationRecord
       when 2 then return 'icons/sofa.svg'
     end
   end
+
+  private
+
+  def set_distance_and_price
+    self.distance = self.departure.distance_to([self.arrival.latitude, self.arrival.longitude])
+    self.price = self.distance * 2
+    self.save
+  end
+
 end
