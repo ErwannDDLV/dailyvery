@@ -20,6 +20,9 @@ class Customer::RequestsController < ApplicationController
     }
 
     @request = Request.new(parameters)
+
+    @request.prepare
+
     if @request.save
       redirect_to customer_requests_path
     else

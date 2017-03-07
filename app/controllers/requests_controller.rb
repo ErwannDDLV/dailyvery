@@ -29,6 +29,7 @@ class RequestsController < ApplicationController
                            .near(@searched_address, @searched_radius)
                           #.where.not(latitude: nil, longitude: nil)
                          #.where.not("locations.latitude = ? AND locations.longitude = ?", nil, nil)
+    @departures_nb = @departures.length
 
     @hash = Gmaps4rails.build_markers(@departures) do |departure, marker|
       marker.lat departure.latitude

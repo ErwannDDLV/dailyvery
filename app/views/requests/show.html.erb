@@ -57,8 +57,9 @@
     }
     calcRoute(<%= @request.departure.latitude %>, <%= @request.departure.longitude %>, <%= @request.arrival.latitude %>, <%= @request.arrival.longitude %>);
     var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' } }, function(){
+    handler.buildMap({ internal: { id: 'map' }, provider: { scrollwheel: false } }, function(){
       directionsDisplay.setMap(handler.getMap());
+
     });
     $("#btn-rider-validation").click(function(event) {
       $.ajax({
