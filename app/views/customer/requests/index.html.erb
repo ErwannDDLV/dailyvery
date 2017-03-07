@@ -15,15 +15,15 @@
             <%= request.description %> <br>
             Prix : <%= request.price.round %>€ <br>
             <% if request.status == "created" %>
-              <div class="statut-orange">Statut : <%= request.status %></div>
+              <div class="statut-orange">Statut : <%= request.explicit_status %></div>
               <button class="btn btn-client btn-client-index">Reçu</button> <br>
             <%elsif request.status == "pending" %>
               Code : <%= request.code %>€ <br>
-              <div class="statut-orange">Statut : <%= request.status %></div>
+              <div class="statut-orange">Statut : <%= request.explicit_status %></div>
               <button class="btn btn-client btn-client-index">Reçu</button> <br>
             <% else %>
               <div class="booked">
-                Statut : <%= request.status %> <br>
+                Statut : <%= request.explicit_status %> <br>
                 Code : <%= request.code %>
               </div>
             <% end %>
@@ -46,7 +46,21 @@
 </div>
 
 
+<%= content_for(:after_js) do %>
+  <script type="text/javascript">
+  $(document).on('ready', function() {
 
+    $(".btn-client-index ").click(function(event) {
+      $.ajax({
+        method: "put",
+        url: '<%= request_path(@request) %>',
+        dataType: 'script',
+        format: 'js'
+      });
+    });
+  });
+  </script>
+<% end %>
 
 
 <!-- <div class="index-list">
