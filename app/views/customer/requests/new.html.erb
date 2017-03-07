@@ -1,5 +1,5 @@
 <div class="form-wrapper" style="margin: 20px 10%;">
-  <h1>Créer une nouvelle demande</h1>
+  <h2 class="small-header">Créer une nouvelle demande</h1>
   <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
     <%= f.error_notification %>
 
@@ -8,7 +8,7 @@
     <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
     <%= f.label "Type de colis" %>
     <div style="display: flex; justify-content: space-between;width: 30%">
-    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, item_wrapper_tag: :div) do |b| %>
+    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, input_html: {id: "parcel_type"} , item_wrapper_tag: :div, checked: 2 ) do |b| %>
       <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
       <% end %>
     </div>
@@ -17,8 +17,11 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="price-tag" >
-            Prix de la course : 2 €
-            <%= f.button :submit, "Valider la demande" %>
+            <div class="booked booked-show">
+              <p id="distance">Distance:</p>
+              <p id="price">Prix de la course : 2 €</p>
+            </div>
+            <%= f.button :submit, "Valider la demande", class: "btn-client btn-show" %>
           </div>
         </div>
       </div>
@@ -31,26 +34,51 @@
   <script type="text/javascript">
   $(document).on('ready', function() {
 
-    var geocoder;
-    var map;
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-
     function initialize() {
       var departure_input = document.getElementById('departure_address');
       var arrival_input = document.getElementById('arrival_address');
       var autocomplete = new google.maps.places.Autocomplete(departure_input);
       var autocomplete = new google.maps.places.Autocomplete(arrival_input);
-
     }
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+
+    function calcRoute(departure, arrival) {
+      var origin      = String(departure);
+      var destination = String(arrival);
+      var request = {
+          origin:      origin,
+          destination: destination,
+          travelMode:  google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          // calcul distance
+          var result = response["routes"][0]["legs"][0]["distance"]["value"];
+          $('#distance').html('<p>Distance : ' + result/1000 + ' km</p>');
+          // calcul price
+          var parcel = 1;
+          if ($('#request_parcel_0').is(':checked') === true) {parcel = 0};
+          if ($('#request_parcel_1').is(':checked') === true) {parcel = 1};
+          if ($('#request_parcel_2').is(':checked') === true) {parcel = 2};
+          console.log(parcel);
+          var distance_coef = [0.8, 1, 1.5];
+          var fix = [0.5, 1, 1.5];
+          var price = ((distance_coef[parcel] * result/1000) + fix[parcel]);
+          console.log(price);
+          $('#price').html('<p>Prix de la course : ' + Math.round(price) + ' €</p>');
+        }
+      });
+    }
 
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
-      var parcel = 1;
-      var newParams = {departure: from, arrival: to};
-      if ( from && to ) {
+      if ( from && to) {
+        // calcul distance and price
+        calcRoute(from, to);
         $('.form-confirm').removeClass('hidden');
       };
     };
@@ -58,9 +86,16 @@
     $("#departure_address").change(function() {
       testAddressFields();
     });
-
-
     $("#arrival_address").change(function() {
+      testAddressFields();
+    });
+    $("#request_parcel_0").click(function() {
+      testAddressFields();
+    });
+    $("#request_parcel_1").click(function() {
+      testAddressFields();
+    });
+    $("#request_parcel_2").click(function() {
       testAddressFields();
     });
   });
