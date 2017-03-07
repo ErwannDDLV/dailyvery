@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:index]
   end
   namespace :customer do
-    resources :requests, only: [:index, :new, :create]
+    resources :requests, only: [:index, :new, :create, :update]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -38,3 +38,26 @@ h1 {
       }
 }
 
+
+.btn.btn-chevron:focus {
+  outline: none;
+}
+
+.form-wrapper {
+  min-height: 75Vh;
+}
+
+.btn-show {
+  margin: auto;
+}
+
+.form-confirm {
+  text-align: center;
+  padding: 10px !important;
+  background-color: white !important;
+  color: $gray !important;
+}
+
+.price-tag {
+  padding: 10px;
+}
