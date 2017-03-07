@@ -1,42 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
+<div class="wrapper-show">
+  <div class="btn-customer-index">
+    <%= link_to requests_path do %>
+      <button class="btn btn-rider">Chercher d'autres rides disponibles</button>
+    <% end %>
+  </div>
 
-      <h3> <%= @current_user.anonymize %> </h3>
-
-      <h1>Les livraisons que j'ai confirmées</h1>
-      <% if @rider_requests.empty?%>
-        <p>Aucune livraison à effectuer</p>
-      <% else %>
-        <ul>
-          <% @rider_requests.each do |request| %>
-            <li>
-              <h2>Livraison n° <%= request.id %></h2>
-              <ul>
-                <li>Description : <%= request.description %></li>
-                <li>Départ : <%= request.departure.address %></li>
-                <li>Arrivée : <%= request.arrival.address %></li>
-                <li>Client : <%= request.customer.anonymize %></li>
-                <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
-              </ul>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <h1>Mes livraisons passées</h1>
-      <% if @rider_done.empty? %>
-        <p>Aucune livraison à effectuer</p>
-      <% else %>
-        <% @rider_done.each do |request| %>
-          <li>Livré : <%= request.description %></li>
-          <% end %>
-          <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
-      <% end %>
-
-      <%= link_to rider_requests_path do %>
-        <button class="btn btn-primary customer-btn">Chercher d'autres rides disponibles</button>
-      <% end %>
+  <div class="container">
+    <div class="row">
+      <% @rider_requests.each do |request| %>
+        <div class="col-lg-4 col-xs-12 center">
+          <div class="index-card">
+            <h3 class="small-header"> Course n° <%= request.id %></h3>
+            <%= request.description %> <br>
+            Prix : <%= request.price.round %>€ <br>
+            <% if request.status == "created" %>
+              <div class="statut-orange">Statut : <%= request.status %></div>
+              <button class="btn btn-client btn-client-index">Livré</button> <br>
+            <%elsif request.status == "pending" %>
+              <div class="booked booked-orange">
+                Code : <%= request.code %> <br>
+                Statut : <%= request.status %>
+              </div>
+              <button class="btn btn-client btn-client-index">Livré</button> <br>
+            <% else %>
+                Statut : <%= request.status %> <br>
+                Code : <%= request.code %>
+            <% end %>
+            <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="collapse" id="collapseExample<%=request.id%>">
+              <div class="well">
+                <p>Adresse de retrait : <%= request.departure.address %></p>
+                <p>Adresse de livraison : <%= request.arrival.address %></p>
+                <p>Distance : <%= request.distance.round %>km </p>
+                <p>Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>

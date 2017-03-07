@@ -24,7 +24,7 @@
 
     <% else %>
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Inscription"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Inscription"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_up", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
     <!-- Button (call-to-action) -->
@@ -56,10 +56,10 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to t(".sign_in", default: "Inscription"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
         <li>
-         <%= link_to t(".sign_up", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+         <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
       </ul>
     </div>

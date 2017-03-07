@@ -23,3 +23,41 @@ h1 {
         font-size: 30px;
       }
 }
+
+.small-header {
+  font-family: $button-font;
+}
+
+.login-wrapper {
+  padding: 50px;
+  height: 75Vh;
+  margin: auto;
+  width: 80%;
+  @media (max-width: 768px) {
+        width: 100%;
+      }
+}
+
+
+.btn.btn-chevron:focus {
+  outline: none;
+}
+
+.form-wrapper {
+  min-height: 75Vh;
+}
+
+.btn-show {
+  margin: auto;
+}
+
+.form-confirm {
+  text-align: center;
+  padding: 10px !important;
+  background-color: white !important;
+  color: $gray !important;
+}
+
+.price-tag {
+  padding: 10px;
+}

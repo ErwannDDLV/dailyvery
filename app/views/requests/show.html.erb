@@ -1,45 +1,46 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-xs-12">
-      <div class="card-show">
-        <h3> Course n° <%= @request.id %></h3>
+      <div class="index-card">
+        <h3 class="small-header"> Course n° <%= @request.id %></h3>
         <p> <b>Adresse de retrait</b> : <%= @request.departure.address %></p>
         <p> <b>Adresse de livraison</b> : <%= @request.arrival.address %></p>
         <p> <b>Description de la course</b> : <%= @request.description %></p>
+        <p><b>Prix de la course</b> : <%= @request.price.round %>€ </p>
+        <p><b>Distance</b> : <%= @request.distance.round %>km </p>
         <p> <b>Type de colis</b> : <%= image_tag @request.parcel_icon, class: "parcel-icon-logo"%></p>
       </div>
-      <div class="card-show card-show-center">
-        <h3> Client </h3>
+      <div class="index-card">
+        <h3 class="small-header"> Client </h3>
         <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
         <p> <b>Contact</b> : <%= @request.customer.email %></p>
       </div>
-        <% if @request.pending? %>
-            <div id="booked">
-              <div class="booked-ride">
-                <%= render 'requests/booked', request: @request %>
-              </div>
-            </div>
-        <% else %>
-          <div class="show-validation">
-            <h4>Je prends ce ride</h4> <%= render 'shared/switch' %>
-            <div class="booked-ride">
-            <div id="booked"></div>
-             </div>
+      <% if @request.pending? || @request.done? %>
+        <div id="booked">
+            <%= render 'requests/booked', request: @request %>
+        </div>
+      <% else %>
+          <div class="btn-rider-show">
+            <button class="btn btn-rider" type="button" id="btn-rider-validation">
+            Je prends ce ride
+          </button>
           </div>
-        <% end %>
+          <div id="booked"></div>
+      <% end %>
     </div>
-    <div class="col-lg-6 col-xs-12">
+     <div class="col-lg-6 col-xs-12">
       <div id="map" style='width: 100%; height: 500px;'></div>
     </div>
   </div>
 </div>
+
+
 
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
   $(document).on('ready', function() {
     var directionsDisplay = new google.maps.DirectionsRenderer();
     var directionsService = new google.maps.DirectionsService();
-
     function calcRoute(lat_departure, lng_departure, lat_arrival, lng_arrival) {
       var origin      = new google.maps.LatLng(lat_departure, lng_departure);
       var destination = new google.maps.LatLng(lat_arrival, lng_arrival);
@@ -54,15 +55,12 @@
         }
       });
     }
-
     calcRoute(<%= @request.departure.latitude %>, <%= @request.departure.longitude %>, <%= @request.arrival.latitude %>, <%= @request.arrival.longitude %>);
-
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function(){
       directionsDisplay.setMap(handler.getMap());
     });
-
-    $("#switch-shadow").change(function(event) {
+    $("#btn-rider-validation").click(function(event) {
       $.ajax({
         method: "put",
         url: '<%= request_path(@request) %>',
@@ -70,8 +68,6 @@
         format: 'js'
       });
     });
-
   });
-
   </script>
 <% end %>

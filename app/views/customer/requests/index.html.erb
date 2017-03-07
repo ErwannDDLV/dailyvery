@@ -1,106 +1,45 @@
-
-  <% @customer_requests.each do |request| %>
-  <div class='d-wrapper'>
-    <div class="row">
-      <div class="col-xs-12">
-          <div class="desc-card">
-            <div>
-              <%= image_tag request.parcel_icon, style: 'height:20px; width:20px;' %>
-              <div>
-                <strong><%= request.description %></strong>
-              </div>
-            </div>
-            <div class="desc-card-status">
-              <% if !request.rider.nil? %>
-                <span class="label label-default"><%= request.code.upcase %></span>
-              <% end %>
-              <% case request.status %>
-                <% when "created" then %>
-                  <span class="label label-warning"><%= request.status %></span>
-                <% when "pending" %>
-                  <span class="label label-primary"><%= request.status %></span>
-                <% when "done" then %>
-                  <span class="label label-success"><%= request.status %></span>
-              <% end %>
-            </div>
-          </div>
-      </div>
-    </div>
-
-    <% if request.status == "done" %>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="confirm-card">
-          <div class="confirm-text">
-            <small>Confirmer la réception</small>
-            <i class="fa fa-toggle-off confirm-dv" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="wrapper-show">
+  <div class="btn-customer-index">
+    <%= link_to new_customer_request_path do %>
+    <button class="btn btn-client">Créer une nouvelle demande</button>
     <% end %>
+  </div>
 
-
+  <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-lg-6">
-        <div class='address-card'>
-          <div>
-            <small>DE : </small><%= request.departure.address %>
-          </div>
-          <div>
-            <small> A : </small><%= request.arrival.address %>
+      <% @customer_requests.each do |request| %>
+        <div class="col-lg-4 col-xs-12 center">
+          <div class="index-card">
+            <h3 class="small-header"> Course n° <%= request.id %></h3>
+            <%= request.description %> <br>
+            Prix : <%= request.price.round %> <br>
+            <% if request.status == "created" %>
+              <div class="statut-orange">Statut : <%= request.status %></div>
+              <button class="btn btn-client btn-client-index">Reçu</button> <br>
+            <%elsif request.status == "pending" %>
+              Code : <%= request.code %> <br>
+              <div class="statut-orange">Statut : <%= request.status %></div>
+              <button class="btn btn-client btn-client-index">Reçu</button> <br>
+            <% else %>
+              <div class="booked">
+                Statut : <%= request.status %> <br>
+                Code : <%= request.code %>
+              </div>
+            <% end %>
+            <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="collapse" id="collapseExample<%=request.id%>">
+            <div class="well">
+      <p>Adresse de retrait : <%= request.departure.address %></p>
+      <p>Adresse de livraison : <%= request.arrival.address %></p>
+      <p>Distance : <%= request.distance.round %>km </p>
+      <p>Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
+    </div>
+  </div>
           </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <% if request.rider.nil? %>
-          Pas de rider sur cette course
-        <% else %>
-          <div>
-            <%= request.rider.email %>
-          </div>
-        <% end %>
-      </div>
+      <%end%>
     </div>
-</div>
-<% end %>
-
-
-<div class="customer-index">
-
-<%= link_to new_customer_request_path do %>
-  <button class="btn btn-primary customer-btn">Créer une nouvelle demande</button>
-  <% end %>
-  <!-- Pauline : affichage si pas de request pour current_user -->
-  <% if @customer_requests.empty? %>
-    <div class="empty-requests">
-      <p>Vous n'avez aucune demande en cours.</p>
-    </div>
-  <!-- Eric -->
-  <% else %>
-    <table class="rwd-table">
-      <tr>
-        <th>Adresse de retrait</th>
-        <th>Adresse de livraison</th>
-        <th>Description de la course</th>
-        <th>Information Rider</th>
-      </tr>
-      <% @customer_requests.each do |request| %>
-        <tr>
-          <td data-th="Adresse de retrait"><%= request.departure.address %></td>
-          <td data-th="Adresse de livraison"><%= request.arrival.address %></td>
-          <td data-th="Description de la course"> <%= image_tag request.parcel_icon, style: 'height:20px; width:20px;' %> <br>
-          <%= request.description %></td>
-          <td data-th="Rider"> <% if request.rider.nil? %> Pas de rider sur cette course
-            <% else %>
-              <%= request.rider.to_s %>
-              <%= request.rider.email %>
-              <br>
-              <i>(code : <%= request.code %>)</i>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-    </table>
-  <% end %>
+  </div>
 </div>
