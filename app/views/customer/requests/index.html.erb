@@ -12,7 +12,7 @@
           <div class="index-card">
             <h3 class="small-header"> Course n° <%= request.id %></h3>
             <%= request.description %> <br>
-            Prix : <%= request.price.round %> €<br>
+            Prix : <%= request.price.round %>€ <br>
             <% if request.status == "created" %>
               <div class="statut-orange">Statut : <%= request.explicit_status %></div>
             <% elsif request.status == "pending" %>

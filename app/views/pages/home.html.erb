@@ -20,4 +20,13 @@
 </div>
 
 
-
+ <%= content_for :after_js do %>
+    <script type="text/javascript">
+      $(".btn-rider").click(function () {
+          $( document.body ).toggle( "slide", {direction: "right"} );
+        });
+      $(".btn-client").click(function () {
+          $( document.body ).toggle( "slide", {direction: "left"} );
+        });
+    </script>
+<% end %>
