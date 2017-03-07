@@ -2,10 +2,10 @@
   <%= simple_form_for :search, url: requests_path, :method => :get, :class => "form-inline" do |f| %>
     <div class="row">
       <div class="col-lg-5 col-xs-12">
-        <%= f.input :address, as: :string, input_html: {id: "address"}, required: true, autocomplete: "on", label:false %>
+        <%= f.input :address, as: :string, input_html: {id: "address", value: @searched_address}, required: true, autocomplete: "on", label:false %>
       </div>
       <div class="col-lg-5 col-xs-12">
-        <%= f.input :radius, as: :integer, input_html: {id: "radius", value: 5}, label: false %>
+        <%= f.input :radius, as: :integer, input_html: {id: "radius", value: @searched_radius}, label: false %>
       </div>
       <div class="col-lg-2 col-xs-12">
         <%= f.button :submit, value: "Rechercher" %>
