@@ -1,0 +1,38 @@
+.btn-customer-index {
+  margin: auto;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.btn-client-index {
+  font-size: 1em;
+  padding: 6px;
+  margin-top: 5px;
+}
+
+.index-card {
+  background-color: #eeeeee;
+  border-radius: $border-radius-small;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  min-height: 285px;
+}
+
+.statut-orange{
+  color: $light-orange;
+  font-weight: bold;
+}
+.center {
+  text-align: center;
+}
+
+.btn-chevron {
+  border: none;
+ background-color: #eeeeee;
+ padding: 20px;
+}
+
+.wrapper-show {
+  min-height: 80Vh;
+}

@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-xs-12">
-      <div class="card-show">
+      <div class="index-card">
         <h3 class="small-header"> Course n° <%= @request.id %></h3>
         <p> <b>Adresse de retrait</b> : <%= @request.departure.address %></p>
         <p> <b>Adresse de livraison</b> : <%= @request.arrival.address %></p>
         <p> <b>Description de la course</b> : <%= @request.description %></p>
-        <p><b>Prix de la course</b> : <%= @request.price %>€ </p>
-        <p><b>Distance</b> : <%= @request.distance %>km </p>
+        <p><b>Prix de la course</b> : <%= @request.price.round %>€ </p>
+        <p><b>Distance</b> : <%= @request.distance.round %>km </p>
         <p> <b>Type de colis</b> : <%= image_tag @request.parcel_icon, class: "parcel-icon-logo"%></p>
       </div>
-      <div class="card-show card-show-center">
+      <div class="index-card">
         <h3 class="small-header"> Client </h3>
         <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
         <p> <b>Contact</b> : <%= @request.customer.email %></p>
