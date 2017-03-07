@@ -24,7 +24,17 @@ h1 {
       }
 }
 
-
 .small-header {
   font-family: $button-font;
 }
+
+.login-wrapper {
+  padding: 50px;
+  height: 75Vh;
+  margin: auto;
+  width: 80%;
+  @media (max-width: 768px) {
+        width: 100%;
+      }
+}
+
