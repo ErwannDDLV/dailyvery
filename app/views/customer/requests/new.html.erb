@@ -1,5 +1,5 @@
 <div class="form-wrapper" style="margin: 20px 10%;">
-  <h1>Créer une nouvelle demande</h1>
+  <h2 class="small-header">Créer une nouvelle demande</h1>
   <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
     <%= f.error_notification %>
 
@@ -17,9 +17,11 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="price-tag" >
-            <p id="distance">Distance:</p>
-            <p id="price">Prix de la course : 2 €</p>
-            <%= f.button :submit, "Valider la demande" %>
+            <div class="booked booked-show">
+              <p id="distance">Distance:</p>
+              <p id="price">Prix de la course : 2 €</p>
+            </div>
+            <%= f.button :submit, "Valider la demande", class: "btn-client btn-show" %>
           </div>
         </div>
       </div>
