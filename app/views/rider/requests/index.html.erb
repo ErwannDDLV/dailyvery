@@ -1,4 +1,54 @@
-<h3> <%= @current_user.anonymize %> </h3>
+
+<div class="wrapper-show">
+  <div class="btn-customer-index">
+    <%= link_to requests_path do %>
+      <button class="btn btn-rider">Chercher d'autres rides disponibles</button>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <% @rider_requests.each do |request| %>
+        <div class="col-lg-4 col-xs-12 center">
+          <div class="index-card">
+            <h3 class="small-header"> Course n° <%= request.id %></h3>
+            <%= request.description %> <br>
+            Prix : <%= request.price.round %>€ <br>
+            <% if request.status == "created" %>
+              <div class="statut-orange">Statut : <%= request.status %></div>
+              <button class="btn btn-client btn-client-index">Livré</button> <br>
+            <%elsif request.status == "pending" %>
+              <div class="booked booked-orange">
+                Code : <%= request.code %> <br>
+                Statut : <%= request.status %>
+              </div>
+              <button class="btn btn-client btn-client-index">Livré</button> <br>
+            <% else %>
+                Statut : <%= request.status %> <br>
+                Code : <%= request.code %>
+            <% end %>
+            <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="collapse" id="collapseExample<%=request.id%>">
+            <div class="well">
+      <p>Adresse de retrait : <%= request.departure.address %></p>
+      <p>Adresse de livraison : <%= request.arrival.address %></p>
+      <p>Distance : <%= request.distance.round %>km </p>
+      <p>Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
+    </div>
+  </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--<h3> <%= @current_user.anonymize %> </h3>
 
 <%= link_to "Chercher d'autres rides disponibles", requests_path %>
 
@@ -16,7 +66,7 @@
           <li>Arrivée : <%= request.arrival.address %></li>
           <li>Client : <%= request.customer.anonymize %></li>
           <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
-        </ul>
+       <!-- </ul>
       </li>
     <% end %>
   </ul>
@@ -30,5 +80,5 @@
     <li>Livré : <%= request.description %></li>
     <% end %>
     <!-- pensez à recupérer la méthode parcel_icon pour afficher le type de colis -->
-<% end %>
+<!--<% end %> -->
 
