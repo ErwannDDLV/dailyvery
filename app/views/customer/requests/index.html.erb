@@ -11,9 +11,8 @@
         <div class="col-lg-4 col-xs-12 center">
           <div class="index-card">
             <h3 class="small-header"> Course n° <%= request.id %></h3>
-            Description : <br>
             <%= request.description %> <br>
-            Prix : <%= request.price.round %>€ <br>
+            Prix : <%= request.price.round %> <br>
             <% if request.status == "created" %>
               <div class="statut-orange">Statut : <%= request.status %></div>
               <button class="btn btn-client btn-client-index">Reçu</button> <br>
