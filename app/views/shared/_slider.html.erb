@@ -8,7 +8,7 @@
 <%= content_for :after_js do %>
   <script>
   $( function() {
-    $(".ui-slider-handle").text(3 + ' km');
+    $(".ui-slider-handle").text(<%= @searched_radius %>  + ' km');
   });
   </script>
 <% end %>

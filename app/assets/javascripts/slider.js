@@ -6,14 +6,17 @@
 
 $( function() {
   $( "#slider" ).slider({
-    value: 3,
+    value: $( "#search_radius" ).val(),
     min: 1,
     max: 10,
     step: 1,
     slide: function( event, ui ) {
       var valueTest = ui.value;
       $( ".ui-slider-handle" ).text(valueTest + ' km');
-      $( "#search_distance" ).val(valueTest);
+      $( "#search_radius" ).val(valueTest);
     },
   });
 } );
+
+
+// "#{@random_quote.quote}"

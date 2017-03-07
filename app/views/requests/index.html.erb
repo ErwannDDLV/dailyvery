@@ -4,9 +4,9 @@
     <div class="col-xs-12 col-lg-12">
       <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
         <div class="search-form-requests">
-          <%= f.input :address, as: :string, input_html: {id: "address"}, html: {class: "form-search"}, required: true, autocomplete: "on", label:false %>
+          <%= f.input :address, as: :string, input_html: {id: "address", value: @searched_address}, html: {class: "form-search"}, required: true, autocomplete: "on", label:false %>
           <%= render 'shared/slider' %>
-          <%= f.input :distance, input_html: { value: 3 }, as: :hidden %>
+          <%= f.input :radius, input_html: { value: @searched_radius }, as: :hidden %>
           <%= f.button :submit, class: "btn-rider", value: "Rechercher" %>
         </div>
       <% end %>
