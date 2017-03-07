@@ -27,6 +27,25 @@ class Customer::RequestsController < ApplicationController
     end
   end
 
+  def update
+    # byebug
+    @request = Request.find(params[:id])
+    @request.status = 2
+    if @request.save
+      respond_to do |format|
+        format.html { redirect_to customer_requests_path }
+        format.js  # <-- will render `app/views/requests/update.js.erb`
+      end
+      #redirect_to rider_requests_path
+    else
+      respond_to do |format|
+        format.html { render 'customer/requests/index' }
+        format.js  # <-- will render `app/views/requests/update.js.erb`
+      end
+    end
+
+  end
+
   private
 
   def customer_request_params

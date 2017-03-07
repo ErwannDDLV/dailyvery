@@ -43,4 +43,12 @@ class Request < ApplicationRecord
     self.price
   end
 
+  def explicit_status
+    case self.status
+      when 'created' then return 'commandé'
+      when 'pending' then return 'en cours'
+      when 'done' then return 'livré'
+    end
+  end
+
 end
