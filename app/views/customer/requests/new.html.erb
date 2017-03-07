@@ -8,7 +8,7 @@
     <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
     <%= f.label "Type de colis" %>
     <div style="display: flex; justify-content: space-between;width: 30%">
-    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, item_wrapper_tag: :div, checked: 1 ) do |b| %>
+    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, input_html: {id: "parcel_type"} , item_wrapper_tag: :div, checked: 2 ) do |b| %>
       <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
       <% end %>
     </div>
@@ -58,12 +58,20 @@
           $('#distance').html('<p>Distance : ' + result/1000 + ' km</p>');
           // calcul price
           //var parcel = $("#parcel_type").val();
+          // var parcel = $(".parcel_type").val();
           var parcel = 1;
+          if ($('#request_parcel_0').is(':checked') === true) {parcel = 0};
+          if ($('#request_parcel_1').is(':checked') === true) {parcel = 1};
+          if ($('#request_parcel_2').is(':checked') === true) {parcel = 2};
+          // console.log($('#request_parcel_0').val());
+          // console.log($('#request_parcel_1').val());
+          // console.log($('#parcel_type').val());
+          console.log(parcel);
           var distance_coef = [0.8, 1, 1.5];
           var fix = [0.5, 1, 1.5];
           var price = ((distance_coef[parcel] * result/1000) + fix[parcel]);
           console.log(price);
-          $('#price').html('<p>Prix de la course : ' + price + ' €</p>');
+          $('#price').html('<p>Prix de la course : ' + Math.round(price) + ' €</p>');
         }
       });
     }
@@ -71,10 +79,10 @@
     function testAddressFields() {
       var from = $("#departure_address").val();
       var to = $("#arrival_address").val();
-      //var parcel = $('input[:parcel]:checked').val();
-      var parcel = 1;
-      console.log(parcel);
-      if ( from && to && parcel) {
+      // var parcel = $('input(name=request[parcel]):checked').val();
+      //var parcel = $(".parcel_type").val();
+
+      if ( from && to) {
         // calcul distance and price
         calcRoute(from, to);
         $('.form-confirm').removeClass('hidden');
@@ -87,7 +95,13 @@
     $("#arrival_address").change(function() {
       testAddressFields();
     });
-    $("#parcel_type").select(function() {
+    $("#request_parcel_0").click(function() {
+      testAddressFields();
+    });
+    $("#request_parcel_1").click(function() {
+      testAddressFields();
+    });
+    $("#request_parcel_2").click(function() {
       testAddressFields();
     });
   });
