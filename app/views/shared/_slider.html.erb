@@ -1,10 +1,14 @@
-<div class="row">
-  <div class="range-slider">
-    <div class="slider">
-      <input class="lign" type="range" min="0" max="10" value="3" id="fader" step="1" oninput="outputUpdate(value)">
-      <output for="fader" id="volume">3</output>
-    </div>
-  </div>
+
+<!-- <input class="lign" type="range" min="0" max="10" value="3" id="fader" step="1" oninput="outputUpdate(value)">
+      <output for="fader" id="volume">3</output> -->
+<div>
+  <div id="slider"></div>
 </div>
 
-
+<%= content_for :after_js do %>
+  <script>
+  $( function() {
+    $(".ui-slider-handle").text(3 + ' km');
+  });
+  </script>
+<% end %>

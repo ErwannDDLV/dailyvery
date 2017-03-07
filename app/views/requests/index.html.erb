@@ -1,21 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-
-        <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
-          <div class="search-ride">
-            <div>
-            <%= f.input :address, as: :string, input_html: {id: "address"}, html: {class: "form-search"}, required: true, autocomplete: "on", label:false %>
-            </div>
-            <div>
-              <%= render 'shared/slider' %>
-            </div>
-            <div>
-            <%= f.button :submit, value: "Rechercher" %>
-            </div>
-          </div>
-        <% end %>
-
+    <div class="col-xs-12 col-lg-12">
+      <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
+        <div class="search-form-requests">
+          <%= f.input :address, as: :string, input_html: {id: "address"}, html: {class: "form-search"}, required: true, autocomplete: "on", label:false %>
+          <%= render 'shared/slider' %>
+          <%= f.input :distance, input_html: { value: 3 }, as: :hidden %>
+          <%= f.button :submit, class: "btn-rider", value: "Rechercher" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -80,5 +73,6 @@
   });
   </script>
 <% end %>
+
 
 
