@@ -14,16 +14,16 @@
             <%= request.description %> <br>
             Prix : <%= request.price.round %>€ <br>
             <% if request.status == "created" %>
-              <div class="statut-orange">Statut : <%= request.status %></div>
+              <div class="statut-orange">Statut : <%= request.explicit_status %></div>
               <button class="btn btn-client btn-client-index">Livré</button> <br>
             <%elsif request.status == "pending" %>
               <div class="booked booked-orange">
                 Code : <%= request.code %> <br>
-                Statut : <%= request.status %>
+                Statut : <%= request.explicit_status %>
               </div>
-              <button class="btn btn-client btn-client-index">Livré</button> <br>
+              <!-- <button class="btn btn-client btn-client-index">Livré</button> <br> -->
             <% else %>
-                Statut : <%= request.status %> <br>
+                Statut : <%= request.explicit_status %> <br>
                 Code : <%= request.code %>
             <% end %>
             <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
