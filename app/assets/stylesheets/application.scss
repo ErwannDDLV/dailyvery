@@ -14,10 +14,13 @@
 @import "pages/index";
 @import "vendor/index";
 
-body {
-  margin-bottom: 5px;
+.rider-background {
+  background-color: $background-rider;
 }
 
+.client-background {
+  background-color: $background-client;
+}
 h1 {
   @media (max-width: 468px) {
         font-size: 30px;
@@ -26,6 +29,7 @@ h1 {
 
 .small-header {
   font-family: $button-font;
+  margin-top: 0;
 }
 
 .login-wrapper {
