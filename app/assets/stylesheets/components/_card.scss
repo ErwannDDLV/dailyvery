@@ -12,19 +12,16 @@
   top: 10px;
 }
 .card-category {
-  position: absolute;
-  top: 10px;
-  left: 110px;
+ position: absolute;
+  top: 90px;
 }
-
 .card-category img {
   height: 30px;
-  weight: 30px;
+  width: 30px;
 }
-
 .card-description {
   position: absolute;
-  bottom: 10px;
+  top: 25px;
   left: 10px;
   text-align: center;
 }
@@ -51,7 +48,6 @@
 .arrival_ad {
   font-weight: 16px;
   font-size: 20px;
-
 }
 .card-price {
   position: absolute;
@@ -63,3 +59,5 @@
   top: 10px;
   right: 5px;
 }
+
+
