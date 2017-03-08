@@ -1,6 +1,6 @@
 <div class="client-background">
-  <div class="form-wrapper" style="margin: 20px 10%;">
-    <h2 class="small-header">Créer une nouvelle demande</h1>
+  <div class="form-wrapper">
+    <h2 class="small-header">Créer une nouvelle demande</h2>
     <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
       <%= f.error_notification %>
 
@@ -13,23 +13,23 @@
         <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
         <% end %>
       </div>
-
       <div class="form-confirm hidden" style="background: grey; color: white;padding: 5px;">
         <div class="row">
           <div class="col-xs-12">
             <div class="price-tag" >
-              <div class="booked booked-show">
-                <p id="distance">Distance:</p>
-                <p id="price">Prix de la course : 2 €</p>
+                <div class="booked booked-show">
+                  <p id="distance">Distance:</p>
+                  <p id="price">Prix de la course : 2 €</p>
+                </div>
               </div>
               <%= f.button :submit, "Valider la demande", class: "btn-client btn-show" %>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+
 
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
