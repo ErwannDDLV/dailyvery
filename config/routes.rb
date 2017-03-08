@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get '/team', to: 'pages#team', as: 'team'
   resources :requests, only: [:index, :show, :update]
   namespace :rider do
     resources :requests, only: [:index]
