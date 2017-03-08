@@ -52,15 +52,16 @@
         <div class="col-lg-4 col-xs-12 center">
           <div class="course-card">
             <div class="card-header">
-              <h3 class="small-header">Course n° <%= request.id %></h3>
+              <h4 class="small-header">Course n° <%= request.id %></h4>
             </div>
             <div class="course-avatar">
-              <h2><%= request.price.round %>€</h2>
+              <h2 class="small-header round-price-tag"><%= request.price.round %>€</h2>
             </div>
             <div class="course-description">
-              <h2><%= request.description %></h2>
-              <p>Very cool stuff, useful and smart</p>
-            <div>
+              <h2 class="small-header small-header-desc"><%= request.description %></h2>
+              <!-- <p>Adresse de retrait : <%= request.departure.address %></p> -->
+            </div>
+               <div class="course-status">
               <% if request.status == "created" %>
                 <div class="statut-orange">Statut : <%= request.explicit_status %></div>
               <% elsif request.status == "pending" %>
@@ -85,7 +86,6 @@
                   <p>Distance : <%= request.distance.round %>km - Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
