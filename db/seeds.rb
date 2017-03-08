@@ -166,6 +166,7 @@ requests = [
 
 requests.each do |request|
   request_new = Request.new(request)
+  request_new.prepare
   if request_new.save
     puts "request id: #{request_new.id} - #{request_new.description}  OK"
   end
