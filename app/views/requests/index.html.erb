@@ -35,7 +35,7 @@
                 <h3 class="small-header"> Course n° <%= departure.departure_request.id %></h3>
                 Prix : <%= departure.departure_request.price.round %>€ <br>
                 <div id="static-map">
-                  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?scale=false&size=300x200&maptype=roadmap&format=png&visual_refresh=true&path=weight:3%7Ccolor:blue%7Cenc:#{departure.departure_request.polyline}&markers=size:mid%7Ccolor:red%7Clabel:D%7C#{departure.address}&markers=size:mid%7Ccolor:green%7Clabel:A%7C#{departure.departure_request.arrival.address}" %>
+                  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?scale=false&size=300x200&maptype=roadmap&format=png&visual_refresh=true&path=weight:3%7Ccolor:blue%7Cenc:#{departure.departure_request.polyline}&markers=size:mid%7Ccolor:red%7Clabel:D%7C#{departure.address}&markers=size:mid%7Ccolor:green%7Clabel:A%7C#{departure.departure_request.arrival.address}&key=#{ENV['GOOGLE_API_KEY']}" %>
                 </div>
               <% end %>
             </div>
