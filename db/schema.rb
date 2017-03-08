@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303164754) do
+ActiveRecord::Schema.define(version: 20170308160209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170303164754) do
     t.string   "code"
     t.float    "distance"
     t.float    "price"
+    t.text     "polyline"
     t.index ["customer_id"], name: "index_requests_on_customer_id", using: :btree
     t.index ["rider_id"], name: "index_requests_on_rider_id", using: :btree
   end
