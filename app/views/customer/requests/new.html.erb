@@ -8,6 +8,7 @@
       <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
       <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
       <%= f.label "Type de colis" %>
+      <%= f.input :polyline, as: :text, input_html: {id: "polyline", class: "hidden"}, label:false %>
       <div style="display: flex; justify-content: space-between;width: 30%">
       <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, input_html: {id: "parcel_type"} , item_wrapper_tag: :div, checked: 2 ) do |b| %>
         <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
@@ -59,6 +60,10 @@
           // calcul distance
           var result = response["routes"][0]["legs"][0]["distance"]["value"];
           $('#distance').html('<p>Distance : ' + result/1000 + ' km</p>');
+          // get polyligne
+          var polyline = response["routes"][0]["overview_polyline"];
+          $('#polyline').val(polyline);
+          console.log(polyline);
           // calcul price
           var parcel = 1;
           if ($('#request_parcel_0').is(':checked') === true) {parcel = 0};
