@@ -1,33 +1,34 @@
-<div class="form-wrapper" style="margin: 20px 10%;">
-  <h2 class="small-header">Créer une nouvelle demande</h1>
-  <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
-    <%= f.error_notification %>
+<div class="client-background">
+  <div class="form-wrapper">
+    <h2 class="small-header">Créer une nouvelle demande</h2>
+    <%= simple_form_for @request, url: customer_requests_path, method: "POST" do |f| %>
+      <%= f.error_notification %>
 
-    <%= f.input :description %>
-    <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
-    <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
-    <%= f.label "Type de colis" %>
-    <div style="display: flex; justify-content: space-between;width: 30%">
-    <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, input_html: {id: "parcel_type"} , item_wrapper_tag: :div, checked: 2 ) do |b| %>
-      <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
-      <% end %>
-    </div>
-
-    <div class="form-confirm hidden" style="background: grey; color: white;padding: 5px;">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="price-tag" >
-            <div class="booked booked-show">
-              <p id="distance">Distance:</p>
-              <p id="price">Prix de la course : 2 €</p>
+      <%= f.input :description %>
+      <%= f.input :departure,label: "Adresse de départ", input_html: {id: "departure_address"} %>
+      <%= f.input :arrival, label: "Adresse d'arrivée", input_html: {id: "arrival_address"} %>
+      <%= f.label "Type de colis" %>
+      <div style="display: flex; justify-content: space-between;width: 30%">
+      <%= f.collection_radio_buttons(:parcel, [['S',0],['M',1],['L',2]], :last, :first, input_html: {id: "parcel_type"} , item_wrapper_tag: :div, checked: 2 ) do |b| %>
+        <% b.label { b.radio_button + " " + image_tag(Request.parcel_type_icon(b.value), style: 'height:20px; width:20px;') } %>
+        <% end %>
+      </div>
+      <div class="form-confirm hidden" style="background: grey; color: white;padding: 5px;">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="price-tag" >
+                <div class="booked booked-show">
+                  <p id="distance">Distance:</p>
+                  <p id="price">Prix de la course : 2 €</p>
+                </div>
+              </div>
+              <%= f.button :submit, "Valider la demande", class: "btn-client btn-show" %>
             </div>
-            <%= f.button :submit, "Valider la demande", class: "btn-client btn-show" %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 
 
 <%= content_for(:after_js) do %>
