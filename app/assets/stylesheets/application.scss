@@ -14,10 +14,10 @@
 @import "pages/index";
 @import "vendor/index";
 
+/* GENERAL LAYOUT */
 .rider-background {
   background-color: $background-rider;
 }
-
 .client-background {
   background-color: $background-client;
 }
@@ -31,6 +31,42 @@ h1 {
   font-family: $button-font;
   margin-top: 0;
 }
+/* SEARCH FORM */
+.search-form-requests {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+.search-ride {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* GENERAL INDEX */
+ .general-margin {
+  margin-top: 20px;
+}
+
+/* MAPS */
+#map {
+margin: auto;
+margin-bottom: 20px;
+margin-top: 20px;
+min-height: 400px;
+width: 80%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+
+
+.slider {
+  margin-top: 15px;
+}
+
+
 
 .login-wrapper {
   padding: 50px;
@@ -49,7 +85,6 @@ h1 {
 .btn.btn-chevron:focus {
   outline: none;
 }
-
 .form-wrapper {
   min-height: 80Vh;
   width: 80%;
@@ -59,18 +94,15 @@ h1 {
   margin: auto;
   padding: 10px 20px;
 }
-
 .btn-show {
   margin: auto;
 }
-
 .form-confirm {
   text-align: center;
   padding: 10px !important;
   background-color: white !important;
   color: $gray !important;
 }
-
 .price-tag {
   padding: 10px;
 }
