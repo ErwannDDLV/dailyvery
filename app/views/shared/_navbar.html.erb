@@ -16,8 +16,8 @@
       <%= link_to t(".sign_in", default: "Rider"), rider_requests_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
       <%= link_to t(".sign_up", default: "Client"), customer_requests_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
      <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
-            <%= t(".sign_out", default: "Déconnexion") %>
-             <% end %>
+        <%= t(".sign_out", default: "Déconnexion") %>
+      <% end %>
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
       <% end %>
@@ -45,7 +45,7 @@
         <li>
         <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
             <%= t(".sign_out", default: "Déconnexion") %>
-             <% end %>
+          <% end %>
         </li>
       </ul>
     </div>
