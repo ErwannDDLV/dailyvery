@@ -31,7 +31,9 @@
               <%= link_to request_path(departure.departure_request) do %>
                 <h3 class="small-header"> Course n° <%= departure.departure_request.id %></h3>
                 Prix : <%= departure.departure_request.price.round %>€ <br>
-                <div id="static-map"></div>
+                <div id="static-map">
+                  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?scale=false&size=300x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:red%7Clabel:D%7C#{departure.address}&markers=size:mid%7Ccolor:green%7Clabel:A%7C#{departure.departure_request.arrival.address}" %>
+                </div>
               <% end %>
             </div>
           </div>
