@@ -1,9 +1,9 @@
-<div class="wrapper-show">
-  <div class="btn-customer-index">
-    <%= link_to requests_path do %>
-      <button class="btn btn-rider">Chercher d'autres rides disponibles</button>
-    <% end %>
-  </div>
+<div class="rider-background rider-index-height">
+    <div class="btn-customer-index">
+      <%= link_to requests_path do %>
+        <button class="btn btn-rider">Chercher d'autres rides disponibles</button>
+      <% end %>
+    </div>
 
   <div class="container">
     <div class="row">
@@ -21,7 +21,6 @@
                 Code : <%= request.code %> <br>
                 Statut : <%= request.explicit_status %>
               </div>
-              <!-- <button class="btn btn-client btn-client-index">Livré</button> <br> -->
             <% else %>
                 Statut : <%= request.explicit_status %> <br>
                 Code : <%= request.code %>
@@ -35,11 +34,11 @@
                 <p>Adresse de livraison : <%= request.arrival.address %></p>
                 <p>Distance : <%= request.distance.round %>km </p>
                 <p>Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
+
               </div>
             </div>
           </div>
-        </div>
-      <%end%>
+        <%end%>
+      </div>
     </div>
   </div>
-</div>

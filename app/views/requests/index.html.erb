@@ -1,13 +1,16 @@
-<div class="container">
+<div class="rider-background">
+  <div class="container">
   <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
     <div class="row">
         <div class="col-lg-6 col-xs-12">
-          <%= f.input :address, as: :string, input_html: {id: "address", value: @searched_address, class: "form-search search-form-requests"}, required: true, autocomplete: "on", label:false %>
+          <%= f.input :address, as: :string, input_html: {id: "address", value: @searched_address, class: "form-search form-search-input"}, required: true, autocomplete: "on", label:false %>
         </div>
         <div class="col-lg-6 col-xs-12">
           <div class="search-form-requests">
             <div class="un">
-              <%= render 'shared/slider' %>
+              <div class="slider">
+                 <%= render 'shared/slider' %>
+              </div>
               <%= f.input :radius, input_html: { value: @searched_radius }, as: :hidden %>
             </div>
             <div class="deux">
@@ -41,6 +44,8 @@
     </div>
   </div>
 </div>
+</div>
+
 
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
