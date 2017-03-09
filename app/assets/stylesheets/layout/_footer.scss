@@ -1,6 +1,8 @@
 // Your footer style
 .footer {
   background-color: #E8EEF0;
+  display: flex;
+  justify-content: space-between;
   bottom: 0;
   height: 50px;
   width: 100%;
@@ -11,7 +13,7 @@
     display: inline;
     font-size: 1.2em;
   };
-  .footer-content {
+  .footer-content, .meet-team {
     padding: 15px;
   };
 }
