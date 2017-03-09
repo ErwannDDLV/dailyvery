@@ -4,8 +4,9 @@
   background-size: cover !important;
   color: black;
   position: relative;
-  text-decoration: none;
+  text-decoration: none !important;
 }
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -13,8 +14,8 @@
 }
 .card-category {
   position: absolute;
-  top: 88px;
   right: 97px;
+  bottom: 3px;
 }
 
 .card-category img {
@@ -23,17 +24,21 @@
 }
 .card-description {
   position: absolute;
-  top: 10px;
-  top: 25px;
-  left: 10px;
+  top: 30px;
+  width: 100%;
   text-align: center;
+  padding-bottom: 5px;
 }
+
 .card-description h2 {
   font-size: 24px;
 }
+
 .card-description p {
   font-size: 13px;
-  }
+  margin-bottom: 2px;
+}
+
 .card-link {
   position: absolute;
   top: 0;
@@ -46,7 +51,7 @@
 }
 .card-link:hover{
   opacity: 0.1;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .arrival_ad {
   font-weight: 16px;
@@ -54,13 +59,17 @@
 }
 .card-price {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 2px;
+  right: 2px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #FBD009;
+  position: absolute;
+  padding-top: 8px;
 }
 .card-distance {
   position: absolute;
-  top: 10px;
-  right: 5px;
 }
-
-

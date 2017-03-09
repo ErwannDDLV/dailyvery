@@ -106,3 +106,10 @@ width: 80%;
 .price-tag {
   padding: 10px;
 }
+
+*:focus {
+outline: none;
+}
+*::-moz-focus-inner {
+border: none;
+}
