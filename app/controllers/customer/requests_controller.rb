@@ -14,6 +14,8 @@ class Customer::RequestsController < ApplicationController
     parameters = {
       description: customer_request_params[:description],
       parcel: customer_request_params[:parcel],
+      distance: customer_request_params[:distance],
+      price: customer_request_params[:price],
       polyline: customer_request_params[:polyline],
       customer: current_user,
       departure: Location.create(address: customer_request_params[:departure]),
@@ -22,7 +24,7 @@ class Customer::RequestsController < ApplicationController
 
     @request = Request.new(parameters)
 
-    @request.prepare
+    # @request.prepare
 
     if @request.save
       redirect_to customer_requests_path
@@ -53,7 +55,7 @@ class Customer::RequestsController < ApplicationController
   private
 
   def customer_request_params
-    params.require(:request).permit(:description, :departure, :arrival, :parcel, :polyline)
+    params.require(:request).permit(:description, :departure, :arrival, :parcel, :distance, :price, :polyline)
   end
 
 end
