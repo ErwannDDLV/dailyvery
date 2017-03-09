@@ -15,19 +15,19 @@
           <h3 class="small-header"> Client </h3>
           <p> <b>Nom</b> : <%= @request.customer.to_s %></p>
           <p> <b>Contact</b> : <%= @request.customer.email %></p>
-        </div>
-        <% if @request.pending? || @request.done? %>
-          <div id="booked">
-              <%= render 'requests/booked', request: @request %>
-          </div>
-        <% else %>
-            <div class="btn-rider-show">
-              <button class="btn btn-rider" type="button" id="btn-rider-validation">
-              Je prends ce ride
-            </button>
+          <% if @request.pending? || @request.done? %>
+            <div id="booked">
+                <%= render 'requests/booked', request: @request %>
             </div>
-            <div id="booked"></div>
-        <% end %>
+          <% else %>
+              <div class="btn-rider-show">
+                <button class="btn btn-rider" type="button" id="btn-rider-validation">
+                Je prends ce ride
+              </button>
+              </div>
+              <div id="booked"></div>
+          <% end %>
+        </div>
       </div>
        <div class="col-lg-6 col-xs-12">
         <div id="map" style='width: 100%; height: 500px;'></div>
