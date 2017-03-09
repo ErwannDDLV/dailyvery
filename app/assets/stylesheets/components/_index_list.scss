@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.center {
+.center-show {
   text-align: center;
 }
 
@@ -38,9 +38,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.status-next {
 }
 
 .status-indicator {
@@ -79,4 +76,19 @@
   .mobile {
   display: none;
 }
+}
+
+
+
+.price {
+  color: $light-orange;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.mobile-index {
+  a {
+    color: #616668;
+    text-decoration: none;
+  }
 }

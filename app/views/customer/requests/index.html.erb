@@ -1,77 +1,69 @@
-<div class="client-background">
-  <div class="wrapper-show">
-    <div class="btn-customer-index">
-      <%= link_to new_customer_request_path do %>
-      <button class="btn btn-client">Créer une nouvelle demande</button>
-      <% end %>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <% @customer_requests.each do |request| %>
-          <div class="col-lg-4 col-xs-12 center">
-            <div class="course-card">
-              <div class="card-header">
-                <h4 class="small-header">Course n° <%= request.id %></h4>
-              </div>
-              <div class="course-avatar">
-                <h3 class="round-price-tag"><%= request.price.round %>€</h3>
-              </div>
-              <div class="course-description">
-                <h2 class="small-header small-header-desc"><%= request.description %></h2>
-              </div>
-                 <div class="course-status">
-                  <% if request.status == "pending" %>
-                    Code : <%= request.code %><br>
-                  <% end %>
-
-
-                <div class="status-wrapper">
-                  <% status_0 = "off" %>
-                  <% status_1 = "off" %>
-                  <% status_2 = "off" %>
-                  <% case request.status %>
-                    <% when "created" then status_0 = "on" %>
-                    <% when "pending" then status_1 = "on" %>
-                    <% when "done" then status_2 = "on"%>
-                  <% end %>
-                  <%= content_tag(:div, class: "status-indicator si-#{status_0}") do %>
-                    commandé
-                  <% end %>
-                  <%= content_tag(:div, class: "status-next sn-#{status_0}") do %>
-                    <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
-                  <% end %>
-                  <%= content_tag(:div, class: "status-indicator si-#{status_1}", id: "s-in-#{request.id}") do %>
-                    en cours
-                  <% end %>
-                  <%= content_tag(:div, class: "status-next sn-#{status_1}", id: "sn-#{request.id}") do %>
-                    <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
-                  <% end %>
-                  <%= content_tag(:div, class: "status-indicator si-#{status_2}", id: "s-out-#{request.id}") do %>
-                    livré
-                  <% end %>
-                </div>
-
-                <% if request.status == "pending" %>
-                <%= link_to "Je confirme la réception", customer_request_path(request) , id: "btn-delivered-#{request.id}", class: "btn btn-client btn-client-index", method: :put, remote: true %> <br>
-                <% end %>
-
-
-                <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <div class="collapse" id="collapseExample<%=request.id%>">
-                  <div class="well">
-                    <p>Adresse de retrait : <%= request.departure.address %></p>
-                    <p>Adresse de livraison : <%= request.arrival.address %></p>
-                    <p>Distance : <%= request.distance.round %>km - Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
-                  </div>
-                </div>
-              </div>
+<div class="client-background wrapper-show">
+  <div class="btn-customer-index">
+    <%= link_to new_customer_request_path do %>
+    <button class="btn btn-client">Créer une nouvelle demande</button>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @customer_requests.each do |request| %>
+      <div class="col-lg-4">
+        <div class="course-card center-show">
+        <div class="card-header">
+          <h4 class="small-header">Course n° <%= request.id %></h4>
+        </div>
+        <div>
+          <p class="price"><%= request.price.round %>€</p>
+        </div>
+          <div class="course-description">
+            <h2 class="small-header small-header-desc"><%= request.description %></h2>
+          </div>
+          <div class="course-status">
+            <% if request.status == "pending" %>
+            Code : <%= request.code %><br>
+            <% end %>
+          </div>
+          <div class="status-wrapper">
+            <% status_0 = "off" %>
+            <% status_1 = "off" %>
+            <% status_2 = "off" %>
+            <% case request.status %>
+            <% when "created" then status_0 = "on" %>
+            <% when "pending" then status_1 = "on" %>
+            <% when "done" then status_2 = "on"%>
+            <% end %>
+            <%= content_tag(:div, class: "status-indicator si-#{status_0}") do %>
+            commandé
+            <% end %>
+            <%= content_tag(:div, class: "status-next sn-#{status_0}") do %>
+            <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+            <% end %>
+            <%= content_tag(:div, class: "status-indicator si-#{status_1}", id: "s-in-#{request.id}") do %>
+            en cours
+            <% end %>
+            <%= content_tag(:div, class: "status-next sn-#{status_1}", id: "sn-#{request.id}") do %>
+            <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+            <% end %>
+            <%= content_tag(:div, class: "status-indicator si-#{status_2}", id: "s-out-#{request.id}") do %>
+            livré
+            <% end %>
+          </div>
+          <% if request.status == "pending" %>
+          <%= link_to "Je confirme la réception", customer_request_path(request) , id: "btn-delivered-#{request.id}", class: "btn btn-client btn-client-index", method: :put, remote: true %> <br>
+          <% end %>
+          <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="collapse" id="collapseExample<%=request.id%>">
+            <div class="well">
+              <p>Adresse de retrait : <%= request.departure.address %></p>
+              <p>Adresse de livraison : <%= request.arrival.address %></p>
+              <p>Distance : <%= request.distance.round %>km - Type de colis : <%= image_tag request.parcel_icon, class: "parcel-icon-logo"%></p>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

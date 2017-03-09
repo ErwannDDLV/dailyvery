@@ -13,7 +13,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-      <%= link_to t(".sign_in", default: "Rider"), rider_requests_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
+      <%= link_to t(".sign_in", default: "Coursier"), rider_requests_path, class: "navbar-wagon-item navbar-wagon-link rider-link" %>
       <%= link_to t(".sign_up", default: "Client"), customer_requests_path, class: "navbar-wagon-item navbar-wagon-link client-link" %>
      <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
         <%= t(".sign_out", default: "Déconnexion") %>
