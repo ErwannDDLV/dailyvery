@@ -19,6 +19,7 @@ class RequestsController < ApplicationController
     # else
     #   searched_radius = params[:search][:radiu].to_i
     # end
+    @test = Geocoder.coordinates(@searched_address)
 
 
     #@departures = Location.joins("INNER JOIN requests ON locations.id = requests.departure_id")
@@ -40,6 +41,16 @@ class RequestsController < ApplicationController
       #   lng_arrival: departure.departure_request.arrival.longitude
       #   })
     end
+
+    @hash << {
+      lat: Geocoder.coordinates(@searched_address).first,
+      lng: Geocoder.coordinates(@searched_address).last,
+      picture: {
+        :url     => (ActionController::Base.helpers.image_path 'icons/bike.svg'),
+        :width   => 32,
+        :height  => 32
+        }
+      }
 
 
   end
