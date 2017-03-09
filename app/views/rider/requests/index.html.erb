@@ -8,8 +8,8 @@
   <div class="container">
     <div class="row">
       <% @rider_requests.each do |request| %>
-        <div class="col-lg-4 col-xs-12 center">
-          <div class="course-card">
+        <div class="col-lg-4 col-xs-12">
+          <div class="course-card center-show">
             <div class="card-header">
               <h4 class="small-header">Course n° <%= request.id %></h4>
               <h4 class="small-header">Prix : <%= request.price.round %>€</h4>

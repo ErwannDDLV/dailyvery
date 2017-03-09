@@ -26,12 +26,12 @@
     <div id="map"></div>
   </div>
 
-  <div class="mobile">
+  <div class="mobile mobile-index">
     <div class="container">
       <div class="row">
         <% @departures.each do |departure| %>
-          <div class="col-lg-4 col-xs-12 center">
-            <div class="index-card">
+          <div class="col-lg-4 col-xs-12">
+            <div class="index-card center-show">
               <%= link_to request_path(departure.departure_request) do %>
                 <h3 class="small-header"> Course n° <%= departure.departure_request.id %></h3>
                 Prix : <%= departure.departure_request.price.round %>€ <br>
