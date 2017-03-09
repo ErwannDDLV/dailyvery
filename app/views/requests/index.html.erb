@@ -77,7 +77,10 @@
 
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function(){
+      console.log('<%= raw @hash_rider %>');
+      // rider_marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      console.log(<%= raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       directionsDisplay.setMap(handler.getMap());
@@ -94,7 +97,9 @@
           directionsDisplay.setMap(handler.getMap());
         });
       })
+
     });
+
 
 
   });

@@ -36,22 +36,20 @@ class RequestsController < ApplicationController
       marker.lat departure.latitude
       marker.lng departure.longitude
       marker.infowindow render_to_string(partial: "/requests/map_box", locals: { departure: departure })
-      # marker.json({
-      #   lat_arrival: departure.departure_request.arrival.latitude,
-      #   lng_arrival: departure.departure_request.arrival.longitude
-      #   })
+
     end
 
-    @hash << {
+    @hash_rider = {
       lat: Geocoder.coordinates(@searched_address).first,
       lng: Geocoder.coordinates(@searched_address).last,
       picture: {
-        :url     => (ActionController::Base.helpers.image_path 'icons/bike.svg'),
+        :url     => 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
         :width   => 32,
         :height  => 32
         }
-      }
+    }
 
+    @hash << @hash_rider
 
   end
 
