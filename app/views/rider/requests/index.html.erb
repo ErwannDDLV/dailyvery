@@ -22,8 +22,8 @@
                 <div class="statut-orange">Statut : <%= request.explicit_status %></div>
                 <button class="btn btn-client btn-client-index">Livré</button> <br>
               <%elsif request.status == "pending" %>
-                <div class="booked booked-orange">
-                  Code : <%= request.code %> <br>
+                <div class="booked booked-orange" style="font-size: 18px;">
+                  Code : <%= request.code.upcase %> <br>
                   Statut : <%= request.explicit_status %>
                 </div>
               <% else %>
