@@ -34,6 +34,41 @@
   padding-left: 300px;
 }
 
+.status-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-next {
+}
+
+.status-indicator {
+  border: 2px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.si-on {
+  border-color: #f29c2e;
+  border-bottom-style: solid;
+  color: #f29c2e;
+}
+
+.si-off {
+  color: #DDD;
+  border-bottom-style: none;
+  border-color: #DDD;
+}
+
+.sn-on {
+  color: #f29c2e;
+}
+
+.sn-off {
+  color: #DDD;
+}
+
 @media screen and (max-width: 768px) {
   .desktop {
   display: none;

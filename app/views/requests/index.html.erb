@@ -1,7 +1,7 @@
 <div class="rider-background">
   <div class="container">
-  <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
-    <div class="row">
+    <%= simple_form_for :search, url: requests_path, method: :get do |f| %>
+      <div class="row">
         <div class="col-lg-6 col-xs-12">
           <%= f.input :address, as: :string, input_html: {id: "address", value: @searched_address, class: "form-search form-search-input"}, required: true, autocomplete: "on", label:false %>
         </div>
@@ -18,15 +18,16 @@
             </div>
           </div>
         </div>
-    </div>
-  <% end %>
-</div>
+      </div>
+    <% end %>
+  </div>
 
-<div class="desktop">
-  <div id="map"></div>
-</div>
-<div class="mobile">
-  <div class="container">
+  <div class="desktop">
+    <div id="map"></div>
+  </div>
+
+  <div class="mobile">
+    <div class="container">
       <div class="row">
         <% @departures.each do |departure| %>
           <div class="col-lg-4 col-xs-12 center">
@@ -41,9 +42,9 @@
             </div>
           </div>
         <%end%>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -74,6 +75,15 @@
         }
       });
     }
+
+    // var contentString =
+    //   '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+    //   'sandstone rock formation in the southern part of the '+
+    //   'Northern Territory, central Australia.'
+
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: contentString
+    // });
 
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' } }, function(){
