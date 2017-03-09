@@ -19,8 +19,6 @@ class RequestsController < ApplicationController
     # else
     #   searched_radius = params[:search][:radiu].to_i
     # end
-    @test = Geocoder.coordinates(@searched_address)
-
 
     #@departures = Location.joins("INNER JOIN requests ON locations.id = requests.departure_id")
                            #.near(searched_address, searched_radius)
@@ -36,7 +34,6 @@ class RequestsController < ApplicationController
       marker.lat departure.latitude
       marker.lng departure.longitude
       marker.infowindow render_to_string(partial: "/requests/map_box", locals: { departure: departure })
-
     end
 
     @hash_rider = {
