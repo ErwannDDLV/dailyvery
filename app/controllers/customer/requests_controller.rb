@@ -14,6 +14,7 @@ class Customer::RequestsController < ApplicationController
     parameters = {
       description: customer_request_params[:description],
       parcel: customer_request_params[:parcel],
+      polyline: customer_request_params[:polyline],
       customer: current_user,
       departure: Location.create(address: customer_request_params[:departure]),
       arrival: Location.create(address: customer_request_params[:arrival])
@@ -52,7 +53,7 @@ class Customer::RequestsController < ApplicationController
   private
 
   def customer_request_params
-    params.require(:request).permit(:description, :departure, :arrival, :parcel)
+    params.require(:request).permit(:description, :departure, :arrival, :parcel, :polyline)
   end
 
 end
