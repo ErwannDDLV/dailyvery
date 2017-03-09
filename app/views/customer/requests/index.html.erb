@@ -21,20 +21,42 @@
                 <h2 class="small-header small-header-desc"><%= request.description %></h2>
               </div>
                  <div class="course-status">
-                <% if request.status == "created" %>
-                  <div class="statut-orange">Statut : <%= request.explicit_status %></div>
-                <% elsif request.status == "pending" %>
-                  <%= content_tag(:div, class:"statut-orange", id:"div-delivered-#{request.id}") do %>
+                  <% if request.status == "pending" %>
                     Code : <%= request.code %><br>
-                    <%= "Statut : #{request.explicit_status}" %>
                   <% end %>
-                  <%= link_to "Reçu", customer_request_path(request) , id: "btn-delivered-#{request.id}", class: "btn btn-client btn-client-index", method: :put, remote: true %> <br>
-                  <%= content_tag(:div, "Statut : livré", class:"booked hidden", id:"div-done-delivered-#{request.id}")%>
-                <% else %>
-                  <div class="booked">
-                    Statut : <%= request.explicit_status %>
-                  </div>
+
+
+                <div class="status-wrapper">
+                  <% status_0 = "off" %>
+                  <% status_1 = "off" %>
+                  <% status_2 = "off" %>
+                  <% case request.status %>
+                    <% when "created" then status_0 = "on" %>
+                    <% when "pending" then status_1 = "on" %>
+                    <% when "done" then status_2 = "on"%>
+                  <% end %>
+                  <%= content_tag(:div, class: "status-indicator si-#{status_0}") do %>
+                    commandé
+                  <% end %>
+                  <%= content_tag(:div, class: "status-next sn-#{status_0}") do %>
+                    <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+                  <% end %>
+                  <%= content_tag(:div, class: "status-indicator si-#{status_1}", id: "s-in-#{request.id}") do %>
+                    en cours
+                  <% end %>
+                  <%= content_tag(:div, class: "status-next sn-#{status_1}", id: "sn-#{request.id}") do %>
+                    <i class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+                  <% end %>
+                  <%= content_tag(:div, class: "status-indicator si-#{status_2}", id: "s-out-#{request.id}") do %>
+                    livré
+                  <% end %>
+                </div>
+
+                <% if request.status == "pending" %>
+                <%= link_to "Je confirme la réception", customer_request_path(request) , id: "btn-delivered-#{request.id}", class: "btn btn-client btn-client-index", method: :put, remote: true %> <br>
                 <% end %>
+
+
                 <button class="btn btn-chevron" type="button" data-toggle="collapse" data-target="#collapseExample<%=request.id%>" aria-expanded="false" aria-controls="collapseExample">
                   <i class="fa fa-chevron-down" aria-hidden="true"></i>
                 </button>
