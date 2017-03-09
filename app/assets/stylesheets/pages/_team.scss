@@ -1,0 +1,131 @@
+.speech-wrapper{
+  padding: 30px 40px;
+  .bubble{
+    width: 240px;
+    height: auto;
+    display: block;
+    background: white;
+    border: 2px solid $light-blue;
+    border-radius: 4px;
+    position: relative;
+    margin: 0 0 25px;
+    &.alt{
+      margin: 0 0 0 60px;
+    }
+    .txt{
+      padding: 8px 55px 8px 14px;
+      .name{
+        font-weight: 600;
+        font-size: 12px;
+        margin: 0 0 4px;
+        color: #3498db;
+        span{
+          font-weight: normal;
+          color: #b3b3b3;
+        }
+        &.alt{
+          color: #2ecc71;
+        }
+      }
+      .message{
+        font-size: 12px;
+        margin: 0;
+        color: #2b2b2b;
+      }
+      .timestamp{
+        font-size: 11px;
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        text-transform: uppercase; color: #999
+      }
+    }
+    .bubble-arrow {
+      position: absolute;
+      width: 0;
+      bottom:42px;
+      left: -16px;
+      height: 0;
+      &.alt{
+        right: -2px;
+        bottom: 40px;
+        left: auto;
+      }
+    }
+    .bubble-arrow:after {
+      content: "";
+      position: absolute;
+      border: 0 solid transparent;
+      border-top: 9px solid $light-blue;
+      border-radius: 0 20px 0;
+      width: 15px;
+      height: 30px;
+      transform: rotate(145deg);
+    }
+    .bubble-arrow.alt:after {
+      transform: rotate(45deg) scaleY(-1);
+    }
+  }
+}
+
+/* -----
+*/
+
+.center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.comment-item {
+  max-width: 100%;
+  width: 400px;
+}
+
+.comment-item .comment {
+  box-shadow: 3px 3px 1px rgba(0,0,0,0.5);
+  border-radius: 4px;
+  display: block;
+  float: left;
+}
+.comment-item .author {
+  display: block;
+  float: left;
+  line-height: 1em;
+  width: 70px;
+}
+.comment-item .author span {
+  color: rgba(255,255,255,0.5);
+  display: block;
+  font-size: .8em;
+  padding: .3em 0 .5em;
+  text-align: center;
+}
+.comment-item .comment {
+  background-color: tomato;
+  box-sizing: border-box;
+  margin-left: 20px;
+  padding: 1em;
+  position: relative;
+  width: 300px;
+}
+.comment-item .comment:before {
+  border: 10px solid;
+  border-color: transparent tomato transparent transparent;
+  content: '';
+  right: -20px;
+  position: absolute;
+  top: 10px;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* personnalization */
+.team-card {
+  display: flex;
+  justify-content: space-around;
+}
+
