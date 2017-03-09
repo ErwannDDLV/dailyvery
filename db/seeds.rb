@@ -12,18 +12,18 @@ Location.destroy_all
 
 users = [
   {
-    email: 'test1@gmail.com',
+    email: 'edd@gmail.com',
     password: 'password',
     address: '23, cours du Medoc, 33000 Bordeaux',
-    first_name: 'Michel',
-    last_name: 'Dupont'
+    first_name: 'Erwann',
+    last_name: 'D'
   },
   {
-    email: 'test2@gmail.com',
+    email: 'sdc@gmail.com',
     password: 'password',
     address: '40 cours Saint Louis, 33000 Bordeaux',
-    first_name: 'Marie',
-    last_name: 'Bernardino'
+    first_name: 'Sybille',
+    last_name: 'C'
   },
   {
     email: 'test3@gmail.com',
@@ -59,40 +59,61 @@ end
 
 locations = [
   {
-    address: '20 cours Pasteur, 33000 Bordeaux'
+    address: '23, cours du Medoc, 33000 Bordeaux'
   },
   {
-    address: '10 cours Saint Louis, 33000 Bordeaux'
+    address: '107 cours Balguerie Stuttenberg, 33000 Bordeaux'
   },
   {
-    address: '8 impasse Barreyre Deuxième, 33000 Bordeaux'
+    address: '66 Cours Aristide Briand, Bordeaux'
   },
   {
-    address: '5 rue Robert d\'Ennery, 33200 Bordeaux'
+    address: '12 rue du Pas Saint Georges, Bordeaux'
   },
   {
-    address: '28 rue de Pessac, 33000 Bordeaux'
+    address: '16 rue de Soisson, 33000 Bordeaux'
   },
   {
-    address: '14 rue Notre Dame, 33000 Bordeaux'
+    address: '43 Rue d\'Alzon, Bordeaux'
   },
   {
-    address: '1719 Allée Margaux, 33000 Bordeaux'
+    address: '28 rue Lebrun, 33000 Bordeaux'
   },
   {
-    address: '115 cours Balguerie Stuttenberg, 33200 Bordeaux'
+    address: '32 rue Jean Fleuret, Bordeaux'
   },
   {
-    address: '1 rue André Messager, 33400 Talence'
+    address: '39 Rue Chauffour, Bordeaux'
   },
   {
-    address: '263 avenue de Tivoli, 33110 Le Bouscat'
+    address: '20 Rue Goya, Bordeaux'
   },
   {
-    address: '20 rue du Petit Cardinal, 33100 Bordeaux'
+    address: '22 Rue Buhan, Bordeaux'
   },
   {
-    address: '80 rue des Sablières, 33800 Bordeaux'
+    address: '30 Rue Denuits, Bordeaux'
+  },
+  {
+    address: '59 Avenue Jules Guesde, Bordeaux'
+  },
+  {
+    address: '3 Rue Galin, Bordeaux'
+  },
+  {
+    address: '16 Cité Guillot, Floirac'
+  },
+  {
+    address: '37 Rue Ferbos, Bordeaux'
+  },
+  {
+    address: '27 Rue Tillet, Bordeaux'
+  },
+  {
+    address: '5 Avenue Georges Lassere, 33400 Talence'
+  },
+  {
+    address: '47 Rue Quintin, Bordeaux'
   }
 ]
 
@@ -108,77 +129,121 @@ end
 
 requests = [
   {
-    departure: loc_arr[0],
-    arrival: loc_arr[1],
-    description: '4 chemises à récupérer au pressing',
-    parcel: 1,
+    departure: loc_arr[2],
+    arrival: loc_arr[0],
+    description: 'Une robe et 3 chemises (Pressing Dupont)',
+    parcel: 2,
     customer: users_arr[0],
-    status: 0,
-    distance: 6,
-    price: 8,
-    polyline: 'a}spGbjoBpAk@HA@UB_@De@HiBFeBDkCKeHI{BUkB_@sBk@aDW}AGi@m@gEe@sAOY@QCUGQM_@o@oAc@}@OWGCI@QPCL?Du@~@sCnDc@j@IZeAbAeA~@q@f@gE|CsAv@aA`@_JxCeCp@iHpAcC^oCXgAAkAEmCUgCa@oA]sC{@gAc@iAi@m@a@eBoAuBeBkCeCOQGLIVIVmByBgByB_@c@W`@aErGkAlBmAhBeBtCcBlCj@Z~@f@'
+    rider: users_arr[1],
+    status: 2,
+    distance: 3.9,
+    price: 7,
+    polyline: 'aespGdqoBe@vDu@Ai@CSBKCo@k@aB_BcBoBiAu@mCyAYMKAESCQ@UB_@HgAHyBF}B@aACqCIoEG_AUkBy@yEQ{@W}Ag@wDMy@e@sAOY@QCUUq@yAyCIKGCQDMR?LmFzGIZeAbAeA~@iCnBwCrBiAj@_H|BqC~@{Bf@}Dt@mCb@qBX{ALgAAkAE_BM{BYgB_@gCu@{Ai@cBw@mDgC_DoCyAyAgCsCqCmDaBaCeCeEwBaEIOABOTk@z@MXyAfBcCxC'
   },
   {
     departure: loc_arr[2],
-    arrival: loc_arr[3],
-    description: 'Plateaux apéro',
+    arrival: loc_arr[0],
+    description: 'Plateau de fromages (Cremerie Deruelle)',
     parcel: 1,
-    customer: users_arr[1],
-    status: 0,
-    distance: 9,
-    price: 12,
-    polyline: '{nxpG|`oB\q@`@f@RXyBxEsCLY@mADK?g@?CGEEMEMDILCXBJFLDBB@Rl@BVJpFNzDJdA^jBd@|Ac@x@_@r@ERBVlD|IIVBRFFPBD?n@zApDtJzDxJLf@Nv@iCtDaChDyA~Be@n@OLMPXRv@f@~BxAjCfBd@^z@n@ZPhBfA`DvBjCfBzAhAtDdCdAv@zAz@zCnBxEhD~E~CjGhERLaAhD{AlFe@jBQ|@w@dHk@zFc@jEBLBLBDFFrBz@fGhC|Af@'
+    customer: users_arr[0],
+    rider: users_arr[1],
+    status: 2,
+    distance: 2.3,
+    price: 3,
+    polyline: 'eytpG~unBsA]eAIGO[kAs@cCMy@w@Va@LOMUaBGESFCUE]EWgA^e@NoA^eATkB\cEr@mC`@i@D}AHcDMoC[iB]uC{@gA]iBw@u@e@iAu@y@o@gDuC{A{AyBeCsCmDaB}BeBuCcAgBkA_C_@m@GJs@dAO\}E`G'
   },
   {
     departure: loc_arr[4],
-    arrival: loc_arr[5],
-    description: 'Plateaux découverte',
+    arrival: loc_arr[1],
+    description: 'Chaussures (Coordonerie Le vaillant)',
     parcel: 1,
-    customer: users_arr[1],
+    customer: users_arr[0],
     rider: users_arr[2],
     status: 2,
-    distance: 2,
-    price: 3,
+    distance: 4.6,
+    price: 6,
     code: "Grand Mulot Sympa",
     polyline: 'm~rpG~dpB[qAScCD}AA_EGaGeC?_ArHoA~IIZMlAAHS?O?_B^wHjBqAZo@ReB^kBd@[BeAVqD~@}Bf@aB`@O@wF{CcAe@Q@MNM\CFIDoBASGQEEIGUGcBG_ACGiE{B_D_BwGqDo@i@g@GiDmByDmBiCsABe@?wAE{@UoFsD^o@_HqCkAAA'
     },
   {
-    departure: loc_arr[6],
-    arrival: loc_arr[7],
-    description: 'Panier AMAP',
+    departure: loc_arr[5],
+    arrival: loc_arr[12],
+    description: 'Panier Bio AMAP',
     parcel: 1,
-    customer: users_arr[2],
-    rider: users_arr[1],
-    status: 1,
-    distance: 5,
-    price: 6,
-    code: "Elégant Faucon Sérieux",
-    polyline: '{}xpGbemBMI]jAiAlEmAlEg@rBRJlE~BbCrAtCdBrAgBDMpA_BlCiD{E{H'
+    customer: users_arr[3],
+    status: 0,
+    distance: 6.7,
+    price: 8,
+    polyline: 'ebupG`arBGPeBx@BpA|ATvBZl@lR`@fKd@`MPrFD~BtG[bI]zBGlDOvCOjDI`DObFU|BKXMh@q@lCwEbCgErA}BpAwBfC{EfD{FhHgMdAaB`AaBpAcCVg@jEaIlC_FnBqDv@uARSrA_ClAwB\o@~C_G`@w@`@{@rEoIr@kA`AcB|CaGrC}Ex@yAdAuBpBsDhCmEj@mAd@sF|@}Jj@sFN{BhB_Rz@wKjBiSRcCFiA?q@EuASwAQ{@k@_BaBwDjCeC~@aAh@s@Ra@Nc@Jk@H{@JyBXsBC_BRiCf@eFFgBCc@|AK`@?'
     },
   {
-    departure: loc_arr[8],
-    arrival: loc_arr[9],
-    description: 'Chaussures à récupérer chez le coordonnier',
+    departure: loc_arr[6],
+    arrival: loc_arr[13],
+    description: 'Gateau d\'anniversaire',
     parcel: 1,
     customer: users_arr[4],
     status: 0,
-    distance: 7,
-    price: 8,
-    polyline: 'whlpGnsrBAd@aCMs@GkAO_Ba@}@[IIQMIVSl@]hBe@fBGPOLs@^m@HgBS]@qDr@y@LSNOX`AfBpCpFNx@B`@GFIPCP?VGP[Xc@d@gApBeF~Iy@|Ae@p@YT}@`@gBr@OBOAGOOKIAKDKHEJMNUDsAJ_@Ao@Ou@UUMEG?IASCKIKKEMAOFMV?FMP_A`@wAl@e@NOD_@ZQTOZYhAKzCUpLF`BLpACDINAJUJ_ADqARmB\IHiFdAqCp@i@Fs@Ag@K[MUSe@q@{@_Bo@kAkAwAsAkAw@s@mAkAi@kAKU@C@G@ICQGMKEKBEBCBk@Ka@EOAk@CgBMu@Qe@]a@_@u@u@g@c@GKq@e@ME_@?c@F[LoAbAKKM?GDEFANSFq@B{Ci@yAC{C]cAMK@MG[QkBqAc@[y@]g@KAKOOIAC@][[e@i@{@U]cCuBaCyBQ[k@g@m@u@EUOGG@ILATARMz@iAhE_A`Dk@~AMDW^ICQBKFGNCNC^MZQTuE|BqAl@Y\QJMAIAKDGHCHODm@N_@J_Dw@oBo@eCk@cFaAOIMIW]Qi@Em@BiEJeIAe@s@FqCTaBJ{GRsDN_BJmI\oELoFXmBDoCRkAFw@EcAUsEuAcIcCcDeAwCy@y@SwCkBsDgCuGkEmFuDwCqB_C{AiEqCyFwDaD{BgHtCmBt@cCj@sE`AyHtAm@Nq@`@a@X]\cAjBe@|@KJEKMEOJER?F_@FuCPyATy@TgBr@_DzCe@`@eC|AyAn@'
+    distance: 5.1,
+    price: 6,
+    polyline: '}uupG~{pBSwGiAHoAFcAAEcFC{BnAMrDe@xCg@bDe@NGL[eCqAZoA\cBHDPBPCNINQLe@@UAI|CYNGjE]SuEO}DCaAa@gKc@iLMy@d@Or@UHYUcBFMLEE[Im@rAg@lAq@lDeC`CkBjBgBJ]`BsBnBeCXa@@ONSDAOQY_@eAsBe@cA}GmMmBsDy@}AAI?OJSTUeCwEKEWTIHOYcGeLgFwJwH}NoEqIuCyFgFqJkHkNM_@Yi@IMTWJUn@{Bf@wAd@eAt@yAr@eAn@s@bBeAGSCg@?w@BqF'
+    },
+  {
+    departure: loc_arr[7],
+    arrival: loc_arr[14],
+    description: 'Livres de cours oubliés',
+    parcel: 1,
+    customer: users_arr[3],
+    status: 0,
+    distance: 4.5,
+    price: 6,
+    polyline: 'qctpGt`qBQmGM{CKiCx@Sb@KrEeAnBg@NEAO]eJK}CUiHOqD@a@ESCQ@UB_@HgAPwF@aACqCIoEG_AUkBy@yEQ{@W}Ag@wDMy@e@sAOY@QCUUq@s@wAe@aAIKGCG?KKIKYa@sC{FyJaR_@w@@W~BuCjBuBPUrC_Fv@yAvBwD?OzC{FbCcFLWz@{AZk@xAiD^{@~AiEjAyCx@sBzDkJ~FeNz@qBKKw@g@aCuA_C}A_BgAeBaAsBeA@QOiBLwBLq@d@_@\a@Pa@qBeE'
+    },
+  {
+    departure: loc_arr[8],
+    arrival: loc_arr[15],
+    description: 'Roti de porc Orloff (Boucherie du moulin)',
+    parcel: 1,
+    customer: users_arr[4],
+    status: 0,
+    distance: 3,
+    price: 4,
+    polyline: 'ettpGncrB~A}@Em@?g@ESGMIs@YeAq@aCMW]w@q@gBQaAKy@QuDWeH@SJSL?N?hBQhBSbBIfD_@fFm@TEPOJUjBGhCYnGw@bBSPAPkAd@sD`@aCNy@LoA@a@nA_JvAaLjAyHLaAHONOx@_@N[D]CQGQY_@GQASB{@l@uD~@sHJ{@BQdAZbBl@`Bn@LQr@iBb@{@bB{DBOc@F_BP^wBj@aDV{@N_@'
+    },
+  {
+    departure: loc_arr[9],
+    arrival: loc_arr[16],
+    description: 'Une montre (Horlogerie Tic Tac)',
+    parcel: 0,
+    customer: users_arr[3],
+    status: 0,
+    distance: 3.6,
+    price: 5,
+    polyline: 'yvupGlxqBuFcFKMiAs@bBaGP}AHoAfAWlImBfS_FtBg@^Ch@ObB_@h@GfBc@bAUzCs@tCu@nJ{BfDw@t@ObCs@t@OZ@HADUP_BAMD]z@eGv@mG|@wG`AsGJg@HOTMr@]L_@@]CQEIhBYfAOhA@lDJdKZbKTfBAdCKpFOdAAFbG'
     },
   {
     departure: loc_arr[10],
-    arrival: loc_arr[11],
-    description: 'Fromages dressés à récupérer',
-    parcel: 1,
-    customer: users_arr[0],
-    rider: users_arr[2],
+    arrival: loc_arr[17],
+    description: 'Flyers x200 (Imprimerie PrintIT)',
+    parcel: 0,
+    customer: users_arr[4],
+    rider: users_arr[1],
     status: 2,
-    distance: 3,
-    price: 5,
-    code: "Grand Renard Agile",
-    polyline: 'abvpGnriB?tE`B@xFHbFHxAExEEpBID@@BBDFBHAFI@KACpAi@dAc@xG]j@A^Ev@KZFzAvG`A`EX|@n@dA~D|D`KzJbT|SNNh@r@Pn@Br@GpAIZMPg@XiBj@a@VO`@Id@Ed@Dj@Nf@r@dAHLfDvBNPBL@`B?f@BfAMZ]n@Wh@AR@vABl@D`CJR`AVzAj@}@hG_BrLK~@y@~FPJZH`Bd@JAFa@NkAZH~Ad@p@T`Cr@|KfDhEpAp@RABAB?BEzAIlLXtNBd@rC_@lAQ'
-    }
+    distance: 4.5,
+    price: 4,
+    polyline: 'q`tpGtlnBxAUpAc@VfBHvBPbH?hCGbBOhCEf@Dj@Jp@^xJHbCFzApFm@xAMzEg@h@FjBd@pAn@~FdCzFdC^TjCbA|Aj@vB~@lKnEd@PhCp@rDz@dCp@p@HZNVRNPN\FT~B|ErAsBlA|@XPbAl@|CxArB`A~@d@tBjAzAr@t@Zn@f@nAdAd@p@~AnCnDfG`EzGv@hAHLDPHJLBPKhCb@|@Jr@HbAN|@J@@BDBBJ@JEBE@AhCPlIJtADd@BnBj@|Ad@dEpAPsAZeC'
+    },
+  {
+    departure: loc_arr[11],
+    arrival: loc_arr[18],
+    description: 'Téléphone Apple réparé (Atelier Smartrepair)',
+    parcel: 0,
+    customer: users_arr[4],
+    rider: users_arr[1],
+    status: 2,
+    distance: 4.7,
+    price: 4,
+    polyline: 'ggupGdbkB{ApBrAjC~AzCsAdB[`@w@{AMPGHt@xAlCdFfEdIJ^Yb@DVbCtEPYFGHCLBbHrM~F`L^v@N`@ANb@dANZx@vAVb@VZLXZ~@Pz@X`Bb@hDd@jD\tBVfBHvBPbH?hCGbBOhCEf@Dj@Jp@^xJHbCFzApFm@xAMzEg@h@FjBd@pAn@AVBXNhBLh@`A`Df@vAfAdCpDtIvApD|D`Lj@vA^n@lCbEdBrCr@~@HZVl@Xh@D`@NPRb@t@jBj@dApAfC|@pBlBrE`@j@r@\`B|@XTBFx@l@\^}@nDm@dD'
+    },
 ]
 
 
