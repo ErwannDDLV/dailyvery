@@ -1,7 +1,7 @@
 .speech-wrapper{
   padding: 30px 40px;
   .bubble{
-    width: 240px;
+    min-width: 400px;
     height: auto;
     display: block;
     background: white;
@@ -10,13 +10,13 @@
     position: relative;
     margin: 0 0 25px;
     &.alt{
-      margin: 0 0 0 60px;
+      margin: 0 0 0 0px;
     }
     .txt{
-      padding: 8px 55px 8px 14px;
+      padding: 8px 10px 8px 14px;
       .name{
         font-weight: 600;
-        font-size: 12px;
+        font-size: 16px;
         margin: 0 0 4px;
         color: #3498db;
         span{
@@ -24,11 +24,11 @@
           color: #b3b3b3;
         }
         &.alt{
-          color: #2ecc71;
+          color: $light-blue;
         }
       }
       .message{
-        font-size: 12px;
+        font-size: 14px;
         margin: 0;
         color: #2b2b2b;
       }
@@ -125,7 +125,33 @@ img {
 
 /* personnalization */
 .team-card {
+  margin: auto;
+  width: 800px;
   display: flex;
   justify-content: space-around;
 }
 
+.team-avatar {
+  margin-top: 45px;
+}
+
+.team-wrapper {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.fa-linkedin, .fa-github {
+  font-size: 25px;
+  color: $light-blue;
+  :hover {
+    color: $light-blue;
+  }
+}
+
+.team-links {
+  width: 25%;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
