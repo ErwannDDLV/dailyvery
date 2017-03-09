@@ -1,3 +1,8 @@
+$("#s-in-<%= @request.id %>").toggleClass("si-on");
+$("#s-in-<%= @request.id %>").toggleClass("si-off");
+$("#s-out-<%= @request.id %>").toggleClass("si-off");
+$("#s-out-<%= @request.id %>").toggleClass("si-on");
+$("#sn-<%= @request.id %>").toggleClass("sn-on");
+$("#sn-<%= @request.id %>").toggleClass("sn-off");
 $("#btn-delivered-<%= @request.id %>").addClass("hidden");
-$("#div-delivered-<%= @request.id %>").addClass("hidden");
-$("#div-done-delivered-<%= @request.id %>").removeClass("hidden");
+//$("#div-done-delivered-<%= @request.id %>").removeClass("hidden");
