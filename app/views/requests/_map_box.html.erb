@@ -1,12 +1,12 @@
 <%= link_to request_path(departure.departure_request) do %>
-  <div class="card"  >
+  <div class="card">
     <div class="card-category"> <%= image_tag departure.departure_request.parcel_icon %> </div>
-    <div class="card-distance"> <%= departure.departure_request.distance.round %> km</div>
+    <div class="card-distance"> Distance à parcourir : <%= departure.departure_request.distance.round %> km</div>
     <div class="card-description">
-      <p><%= departure.departure_request.description %></p>
-      <p class= "arrival_ad">A livrer : <%= departure.departure_request.arrival.address %></p>
+      <p><strong><%= departure.departure_request.description %></strong></p>
+      <p class= "arrival_ad">A livrer au : <br> <%= departure.departure_request.arrival.address %></p>
     </div>
-    <div class="card-price"> Prix : <%=  departure.departure_request.price.round%> €</div>
+    <div class="card-price"><%=  departure.departure_request.price.round%> €</div>
   </div>
 <% end %>
 
