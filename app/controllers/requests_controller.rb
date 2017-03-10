@@ -25,7 +25,7 @@ class RequestsController < ApplicationController
                           #.where.not(latitude: nil, longitude: nil)
                          #.where.not("locations.latitude = ? AND locations.longitude = ?", nil, nil)
     @departures = Location.joins(:departure_request)
-                           .near(@searched_address, @searched_radius)
+                           .near(@searched_address, @searched_radius).uniq!
                           #.where.not(latitude: nil, longitude: nil)
                          #.where.not("locations.latitude = ? AND locations.longitude = ?", nil, nil)
     @departures_nb = @departures.length
