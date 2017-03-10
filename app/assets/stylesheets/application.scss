@@ -17,9 +17,13 @@
 /* GENERAL LAYOUT */
 .rider-background {
   background-color: $background-rider;
+  padding-bottom: 15px;
+  min-height: calc(100vh - 120px);
 }
+
 .client-background {
   background-color: $background-client;
+  min-height: calc(100vh - 120px);
 }
 h1 {
   @media (max-width: 468px) {
