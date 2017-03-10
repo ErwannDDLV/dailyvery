@@ -138,6 +138,7 @@ requests = [
     status: 2,
     distance: 3.9,
     price: 7,
+    code: "Joli Renard Sympa",
     polyline: 'aespGdqoBe@vDu@Ai@CSBKCo@k@aB_BcBoBiAu@mCyAYMKAESCQ@UB_@HgAHyBF}B@aACqCIoEG_AUkBy@yEQ{@W}Ag@wDMy@e@sAOY@QCUUq@yAyCIKGCQDMR?LmFzGIZeAbAeA~@iCnBwCrBiAj@_H|BqC~@{Bf@}Dt@mCb@qBX{ALgAAkAE_BM{BYgB_@gCu@{Ai@cBw@mDgC_DoCyAyAgCsCqCmDaBaCeCeEwBaEIOABOTk@z@MXyAfBcCxC'
   },
   {
@@ -150,6 +151,7 @@ requests = [
     status: 2,
     distance: 2.3,
     price: 3,
+    code:"Gros Renard Sympa",
     polyline: 'eytpG~unBsA]eAIGO[kAs@cCMy@w@Va@LOMUaBGESFCUE]EWgA^e@NoA^eATkB\cEr@mC`@i@D}AHcDMoC[iB]uC{@gA]iBw@u@e@iAu@y@o@gDuC{A{AyBeCsCmDaB}BeBuCcAgBkA_C_@m@GJs@dAO\}E`G'
   },
   {
@@ -157,7 +159,7 @@ requests = [
     arrival: loc_arr[1],
     description: 'Chaussures (Coordonerie Le vaillant)',
     parcel: 1,
-    customer: users_arr[0],
+    customer: users_arr[5],
     rider: users_arr[2],
     status: 2,
     distance: 4.6,
@@ -230,6 +232,7 @@ requests = [
     status: 2,
     distance: 4.5,
     price: 4,
+    code: "Joli Mulot Sérieux",
     polyline: 'q`tpGtlnBxAUpAc@VfBHvBPbH?hCGbBOhCEf@Dj@Jp@^xJHbCFzApFm@xAMzEg@h@FjBd@pAn@~FdCzFdC^TjCbA|Aj@vB~@lKnEd@PhCp@rDz@dCp@p@HZNVRNPN\FT~B|ErAsBlA|@XPbAl@|CxArB`A~@d@tBjAzAr@t@Zn@f@nAdAd@p@~AnCnDfG`EzGv@hAHLDPHJLBPKhCb@|@Jr@HbAN|@J@@BDBBJ@JEBE@AhCPlIJtADd@BnBj@|Ad@dEpAPsAZeC'
     },
   {
@@ -242,6 +245,7 @@ requests = [
     status: 2,
     distance: 4.7,
     price: 4,
+    code: "Grand Bison Vaillant",
     polyline: 'ggupGdbkB{ApBrAjC~AzCsAdB[`@w@{AMPGHt@xAlCdFfEdIJ^Yb@DVbCtEPYFGHCLBbHrM~F`L^v@N`@ANb@dANZx@vAVb@VZLXZ~@Pz@X`Bb@hDd@jD\tBVfBHvBPbH?hCGbBOhCEf@Dj@Jp@^xJHbCFzApFm@xAMzEg@h@FjBd@pAn@AVBXNhBLh@`A`Df@vAfAdCpDtIvApD|D`Lj@vA^n@lCbEdBrCr@~@HZVl@Xh@D`@NPRb@t@jBj@dApAfC|@pBlBrE`@j@r@\`B|@XTBFx@l@\^}@nDm@dD'
     },
 ]
